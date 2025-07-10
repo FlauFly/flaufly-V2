@@ -10,10 +10,17 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/preact": "^4.1.0",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.11",
+    "@tailwindcss/vite": "^4.1.10",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "astro": "^5.8.1",
-    "preact": "^10.26.8"
+    "astro-heroicons": "2.1.5-1",
+    "preact": "^10.26.8",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.10"
   },
   "packageManager": "yarn@4.9.1"
 }

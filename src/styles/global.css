@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+/*
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
@@ -22,6 +26,7 @@ h1 {
 
 
 /* nav styles */
+/*
 .hamburger {
   padding-right: 20px;
   cursor: pointer;
@@ -89,4 +94,4 @@ html.dark {
 
 .dark .nav-links a {
   color: #fff;
-}
+} */
