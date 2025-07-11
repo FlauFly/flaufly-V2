@@ -1,16 +1,23 @@
 ---
-import Social from "./Social.astro"
+import { Icon } from "astro-icon/components";
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
+<footer class="mt-auto bg-sky-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex-shrink-0 text-white">© 2025 FlauFly</div>
 
-<footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
+      <!-- Social Media icons -->
+      <div class="flex space-x-6">
+        <a class="text-white hover:text-fuchsia-600 transition" href="https://github.com/FlauFly">
+          <Icon name="github" size={32} />
+        </a>
+        <a class="text-white hover:text-fuchsia-600 transition" href="https://bsky.app/profile/flaufly.bsky.social">
+          <Icon name="bluesky" size={32} />
+        </a>
+        <a class="text-white hover:text-fuchsia-600 transition" href="mailto:tirhhe@gmail.com">
+          <Icon name="mail" size={32} />
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
