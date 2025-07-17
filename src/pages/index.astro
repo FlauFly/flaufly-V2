@@ -1,7 +1,31 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro"
+import BlogPost from "../components/BlogPost.astro";
 const pageTitle = "Home Page";
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() // sorting by reverse chronological order
+);
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog title</h2>
+	<div class="text-7xl text-sky-600">FlauFly - Digital Garden</div>
+	<div class="text-xl pt-6">On this site you can find my <a href="/blog/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">Essays</a>, <a href="/travels" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">Travels</a> and <a href="/about/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">About</a></div>
+	<div class="text-4xl pt-6 font-texturina">Explore my website:</div>
+	<ul class="list-disc list-inside pt-2">
+		<li>Check out my opinionated <a href="/blog/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">Essays</a> where I share my thoughts</li>
+		<li>Head out to <a href="/travels/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">Travels</a> section for my travel diaries</li>
+		<li>In <a href="/library/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">Library</a> I reflect over books I read and other media consumed </li>
+		<li>You can learn more <a href="/library/" class="font-bold underline text-fuchsia-400 hover:text-fuchsia-600">About</a> me here</li>
+	</ul>
+
+	<!-- List of posts -->
+  <div class="text-4xl pt-6 font-texturina">Essays:</div>
+  <ul class="pt-6">
+    {
+      allPosts.map((post: any) => (
+        <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+      ))
+    }
+  </ul>	
+	
 </BaseLayout>
