@@ -1,4 +1,12 @@
 ---
-const { title, url } = Astro.props
+const { title, url, description, pubDate } = Astro.props
 ---
-<li class="bg-fuchsia-300 rounded-md my-8"><a href={url}>{title}</a></li>
+<li class="bg-fuchsia-300 rounded-md m-8">
+    <a href={url}>
+        <div>
+            <div class="text-2xl font-semibold">{title}</div>
+            <div class="text-gray-700">{description}</div>
+            <div class="flex space-x-2"><p class="text-sky-600">Published:</p><p>{pubDate.toLocaleDateString()}</p></div>
+        </div>
+    </a>
+</li>
