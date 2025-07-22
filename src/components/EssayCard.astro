@@ -1,7 +1,7 @@
 ---
 const { title, url, description, pubDate } = Astro.props
 ---
-<li class="bg-fuchsia-300 rounded-md m-8">
+<li class="rounded-md m-8 transition duration-300 hover:-translate-y-2 hover:bg-fuchsia-300">
     <a href={url}>
         <div>
             <div class="text-2xl font-semibold">{title}</div>
