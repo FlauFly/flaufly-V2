@@ -13,7 +13,9 @@ const { frontmatter } = Astro.props;
     ))}
   </div>
 
-  <slot />
+  <article class="prose">
+    <slot />
+  </article>
 </BaseLayout>
 <style>
   a {
