@@ -1,12 +1,12 @@
 ---
-const { title, url, description, pubDate } = Astro.props
+const { title, url, description, startDate } = Astro.props
 ---
 <li class="rounded-md m-8 transition duration-300 hover:-translate-y-2 hover:bg-fuchsia-300">
     <a href={url}>
         <div>
             <div class="text-2xl font-semibold">{title}</div>
             <div class="text-gray-700">{description}</div>
-            <div class="flex space-x-2"><p class="text-sky-600">Published:</p><p>{pubDate.toLocaleDateString()}</p></div>
+            <div class="flex space-x-2"><p class="text-sky-600">Published:</p><p>{startDate.toLocaleDateString()}</p></div>
         </div>
     </a>
 </li>

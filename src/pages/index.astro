@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import EssaysList from "../components/EssaysList.astro";
 const pageTitle = "Home Page";
 const allPosts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() // sorting by reverse chronological order
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );
 ---
 <BaseLayout pageTitle={pageTitle}>
