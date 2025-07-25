@@ -1,39 +1,41 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ProseWrapper from '../components/ProseWrapper.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-  <p class="flex justify-center">{frontmatter.title}</p>
-
-  <p>{frontmatter.startDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-
-  <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-    ))}
+  <div class="my-4 py-2 sm:m-6 sm:p-4 lg:m-8 lg:p-6">
+    <!-- Title and description at the top -->
+    <div class="pb-8">
+      <div class="text-center text-4xl sm:text-5xl lg:text-6xl font-bold">{frontmatter.title}</div>
+      <div class="text-center text-gray-600 text-base sm:text-lg lg:text-xl">{frontmatter.description}</div>
+    </div>
+    <!-- Metadata about article -->
+    <div class="flex justify-between border-t border-sky-600 border-dotted pt-4">
+      <div>
+        <div class="flex gap-2">
+          <div class="text-sky-600">Started:</div>
+          <div>{frontmatter.startDate.toLocaleDateString()}</div>
+        </div>
+        <div class="flex gap-2">
+          <div class="text-sky-600">Updated:</div>
+          <div>{frontmatter.updated.toLocaleDateString()}</div>
+        </div>
+        <div class="flex gap-2">
+          <div class="text-sky-600">Writing stage:</div>
+          <div>{frontmatter.writingStage}</div>
+        </div>
+      </div>
+      
+      <div class="flex gap-4">
+        {frontmatter.tags.map((tag: string) => (
+          <p class="font-bold transition text-fuchsia-400 hover:text-fuchsia-600"><a href={`/tags/${tag}`}>{tag}</a></p>
+        ))}
+      </div>
+    </div>
   </div>
 
-  <article class="prose max-w-none">
+  <ProseWrapper>
     <slot />
-  </article>
+  </ProseWrapper>
 </BaseLayout>
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>
