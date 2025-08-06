@@ -1,10 +1,40 @@
 ---
 import { getCollection } from "astro:content";
+import EssayCard from "./EssayCard.astro";
+import EssaysList from "./EssaysList.astro";
 const allPosts = await getCollection("blog");
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 ---
 <div class="flex gap-4">
     {topics.map((topic) => (
-        <button class="p-2 rounded-full transition bg-gray-400 hover:bg-gray-600 focus:bg-fuchsia-300 focus:hover:bg-fuchsia-400">{topic}</button>
+        <button data-topic={topic} class="p-2 rounded-full transition bg-gray-400 hover:bg-gray-600 focus:bg-fuchsia-300 focus:hover:bg-fuchsia-400" id="topics">
+            {topic}
+        </button>
     ))}
 </div>
+
+<EssaysList posts={allPosts} />
+
+<script>
+    function hideCards(e: Event) {
+        let selectedButton = e.currentTarget as HTMLButtonElement;
+        let selectedTopic = selectedButton.getAttribute("data-topic");
+        console.log(selectedTopic);
+        let allCards = document.querySelectorAll<HTMLElement>("#card");
+        allCards.forEach((card) => {
+            let cardTopics = card.dataset.topics?.split(",") || [];
+            let matchesTopic = !selectedTopic || cardTopics.includes(selectedTopic);
+            card.classList.toggle("hidden", !matchesTopic);
+        });
+    }
+
+    const buttons = document.querySelectorAll("#topics");
+    buttons.forEach((e) => {
+        e.addEventListener("click", hideCards);
+    })
+</script>
+
+
+
+
+
