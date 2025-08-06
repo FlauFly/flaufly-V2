@@ -2,15 +2,21 @@
 import { getCollection } from "astro:content";
 import EssayCard from "./EssayCard.astro";
 import EssaysList from "./EssaysList.astro";
-const allPosts = await getCollection("blog");
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
+);
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 ---
-<div class="flex gap-4">
-    {topics.map((topic) => (
-        <button data-topic={topic} class="p-2 rounded-full transition bg-gray-400 hover:bg-gray-600 focus:bg-fuchsia-300 focus:hover:bg-fuchsia-400" id="topics">
-            {topic}
-        </button>
-    ))}
+<div class="flex">
+    <div class="text-lg p-2">Topics</div>
+    <div class="text-xl p-2 text-sky-400">|</div>
+    <div class="flex gap-4">
+        {topics.map((topic) => (
+            <button data-topic={topic} class="p-2 rounded-full transition hover:bg-gray-400 focus:bg-fuchsia-400 focus:hover:bg-fuchsia-500 focus:text-white" id="topics">
+                {topic}
+            </button>
+        ))}
+    </div>
 </div>
 
 <EssaysList posts={allPosts} />
@@ -19,7 +25,6 @@ const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())
     function hideCards(e: Event) {
         let selectedButton = e.currentTarget as HTMLButtonElement;
         let selectedTopic = selectedButton.getAttribute("data-topic");
-        console.log(selectedTopic);
         let allCards = document.querySelectorAll<HTMLElement>("#card");
         allCards.forEach((card) => {
             let cardTopics = card.dataset.topics?.split(",") || [];
