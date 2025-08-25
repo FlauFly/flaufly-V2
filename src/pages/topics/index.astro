@@ -3,14 +3,14 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Topics from "../../components/Topics.astro";
 const allPosts = await getCollection("blog")
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
-const pageTitle = "Tag Index";
+const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
+const pageTitle = "Topic Index";
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Topics />
-    <div class="tags">
-        {tags.map((tag) => (
-            <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    <div class="topics">
+        {topics.map((topic) => (
+            <p class="topic"><a href={`/topics/${topic}`}>{topic}</a></p>
         ))}
     </div>
 </BaseLayout>
@@ -19,12 +19,12 @@ const pageTitle = "Tag Index";
     color: #00539F;
   }
 
-  .tags {
+  .topics {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .tag {
+  .topic {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
     border-radius: .5em;

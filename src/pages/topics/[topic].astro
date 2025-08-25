@@ -6,21 +6,21 @@ import EssaysList from '../../components/EssaysList.astro';
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog");
 
-    const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+    const uniqueTopics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 
-    return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post: any) => post.data.tags.includes(tag));
+    return uniqueTopics.map((topic) => {
+    const filteredPosts = allPosts.filter((post: any) => post.data.topics.includes(topic));
     return {
-        params: { tag },
+        params: { topic },
         props: { posts: filteredPosts },
     };
     });
 }
 
-const { tag } = Astro.params;
+const { topic } = Astro.params;
 const { posts } = Astro.props;
 ---
-<BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
+<BaseLayout pageTitle={topic}>
+  <p>Posts tagged with {topic}</p>
   <EssaysList posts={posts}/>
 </BaseLayout>
