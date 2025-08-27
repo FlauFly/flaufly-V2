@@ -9,10 +9,10 @@ const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())
 ---
 <div class="flex">
     <div class="text-lg p-2">Topics</div>
-    <div class="text-xl p-2 text-sky-400">|</div>
+    <div class="text-xl p-2 text-primary">|</div>
     <div class="flex gap-4">
         {topics.map((topic) => (
-            <button data-topic={topic} class="p-2 rounded-full transition hover:bg-gray-400 focus:bg-fuchsia-400 focus:hover:bg-fuchsia-500 focus:text-white" id="topics">
+            <button data-topic={topic} class="p-2 rounded-full transition hover:bg-secondary focus:bg-primary" id="topics">
                 {topic}
             </button>
         ))}

@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --font-texturina: "Texturina", serif;
+  --font-raleway: "Raleway";
+  --font-noto: "Noto Sans";
+
+  --color-text: #eeebef;
+  --color-background: #0f0326;
+  --color-primary: #692187;
+  --color-secondary: #4f106a;
+  --color-accent: #f773e1;
 }

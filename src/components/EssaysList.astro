@@ -2,7 +2,7 @@
 import EssayCard from "./EssayCard.astro"
 const { posts } = Astro.props
 ---
-<div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 bg-secondary/25 rounded-md">
 {
     posts.map((post: any) => (
     <EssayCard url={`/posts/${post.id}/`} title={post.data.title} description={post.data.description} startDate={post.data.startDate} topics={post.data.topics} />
