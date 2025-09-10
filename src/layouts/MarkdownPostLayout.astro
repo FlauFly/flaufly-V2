@@ -1,9 +1,11 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ProgressBar from '../components/ProgressBar.astro';
 import ProseWrapper from '../components/ProseWrapper.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
+  <ProgressBar />
   <div class="my-4 py-2 sm:m-6 sm:p-4 lg:m-8 lg:p-6">
     <!-- Title and description at the top -->
     <div class="pb-8">
