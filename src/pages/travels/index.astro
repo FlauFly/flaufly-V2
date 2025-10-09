@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TravelsList from '../../components/TravelsList.astro';
+const allPosts = (await getCollection("travelogue")).sort(
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
+);
+const pageTitle = "Travel Diaries";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where I will post about my trips abroad.</p>
+  <TravelsList posts={allPosts}/>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import ProseWrapper from '../components/ProseWrapper.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <ProgressBar />
+  <div class="my-4 py-2 sm:m-6 sm:p-4 lg:m-8 lg:p-6">
+    <!-- Title and description at the top -->
+    <div class="pb-8">
+      <div class="text-center text-4xl sm:text-5xl lg:text-6xl font-bold">{frontmatter.title}</div>
+    </div>
+    <!-- Metadata about article -->
+    <div class="flex justify-between border-t border-primary border-dotted pt-4">
+      <div>
+        <div class="flex gap-2">
+          <div class="text-accent">Started:</div>
+          <div>{frontmatter.startDate.toLocaleDateString()}</div>
+        </div>
+        <div class="flex gap-2">
+          <div class="text-accent">Finished:</div>
+          <div>{frontmatter.endDate.toLocaleDateString()}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ProseWrapper>
+    <slot />
+  </ProseWrapper>
+</BaseLayout>

@@ -14,5 +14,14 @@ const blog = defineCollection({
     writingStage: z.string(),
   }),
 });
+
+const travelogue = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/travels" }),
+  schema: z.object({
+    title: z.string(),
+    startDate: z.date(),
+    endDate: z.date(),
+  }),
+});
 // Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { blog, travelogue };

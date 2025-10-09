@@ -1,0 +1,11 @@
+---
+import TravelCard from "./TravelCard.astro"
+const { posts } = Astro.props
+---
+<div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 bg-secondary/25 rounded-md">
+{
+    posts.map((post: any) => (
+    <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} />
+    ))
+}
+</div>
