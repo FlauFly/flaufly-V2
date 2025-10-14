@@ -15,7 +15,7 @@ export default defineConfig({
   },
   integrations: [
     mdx({
-      remarkPlugins: [[remarkToc, { heading: "contents", maxDepth: 3 }]],
+      remarkPlugins: [[remarkToc, { heading: "contents  ", maxDepth: 3 }]],
     }),
     react(),
     icon(),

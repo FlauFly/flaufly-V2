@@ -1,5 +1,6 @@
 ---
 import type { MarkdownHeading } from 'astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   headings: MarkdownHeading[];
@@ -7,18 +8,92 @@ interface Props {
 
 const { headings } = Astro.props;
 
-const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
+console.log(headings);
 ---
 
-<nav>
-  <h2>Table of Contents</h2>
-  <ul>
-    {
-      filteredHeadings.map((heading) => (
-        <li>
-          <a href={`#${heading.slug}`}>{heading.text}</a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+  <div class="collapse-header">
+    <h2>Table of Contents</h2>
+    <Icon name={"heroicons:chevron-down"} size={24} class="arrow-icon" />
+  </div>
+  <div class="collapse-content">
+    <nav class="toc">
+      <ul>
+        {
+          headings
+          .filter(({ depth }) => depth >= 1 && depth < 4)
+          .map((heading) => (
+            <li class="toc-item" data-level={heading.depth}>
+            <a href={`#${heading.slug}`} class="toc-link">
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+      </ul>
+    </nav>
+</div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .collapse-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .collapse-header h2 {
+    font-weight: bold;
+  }
+
+  .arrow-icon {
+    color: var(--color-accent);
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  }
+
+  .arrow-icon.expanded {
+    transform: rotate(180deg);
+  }
+
+  .collapse-content {
+    display: none;
+  }
+
+  .collapse-content.expanded {
+    display: block;
+  }
+
+  .toc-item[data-level="1"] .toc-link {
+    margin-left: 0;
+  }
+  .toc-item[data-level="2"] .toc-link {
+    margin-left: 24px;
+  }
+
+  .toc-link {
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  }
+
+  .toc-link:hover {
+    color: var(--color-primary)
+  }
+</style>
+
+<script>
+  // Grab ToC elements
+  const header = document.querySelector(".collapse-header");
+  const content = document.querySelector(".collapse-content");
+  const arrowIcon = header?.querySelector(".arrow-icon");
+
+  // Toggle handler
+  const clickHandler = () => {
+    content?.classList.toggle("expanded");
+    arrowIcon?.classList.toggle("expanded");
+  }
+
+  // Add listener
+  header?.addEventListener("click", clickHandler);
+</script>

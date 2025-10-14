@@ -587,6 +587,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/heroicons@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@iconify-json/heroicons@npm:1.2.3"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/121a0e8bd6cd2091b0ceeb334754a068253cf6cc819f4cc18acfba66a4d59bcd092ce6c476a584d3a0874242b9c7f21459f24bfba3bb6a75d63f46cf31e701f4
+  languageName: node
+  linkType: hard
+
 "@iconify/tools@npm:^4.0.5":
   version: 4.1.2
   resolution: "@iconify/tools@npm:4.1.2"
@@ -606,7 +615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/types@npm:^2.0.0":
+"@iconify/types@npm:*, @iconify/types@npm:^2.0.0":
   version: 2.0.0
   resolution: "@iconify/types@npm:2.0.0"
   checksum: 10c0/65a3be43500c7ccacf360e136d00e1717f050b7b91da644e94370256ac66f582d59212bdb30d00788aab4fc078262e91c95b805d1808d654b72f6d2072a7e4b2
@@ -1727,6 +1736,13 @@ __metadata:
   bin:
     astring: bin/astring
   checksum: 10c0/e7519544d9824494e80ef0e722bb3a0c543a31440d59691c13aeaceb75b14502af536b23f08db50aa6c632dafaade54caa25f0788aa7550b6b2d6e2df89e0830
+  languageName: node
+  linkType: hard
+
+"astro-heroicons@npm:2.1.5-1":
+  version: 2.1.5-1
+  resolution: "astro-heroicons@npm:2.1.5-1"
+  checksum: 10c0/f80d6891c9e5e479713d9ea15121b4b21e7d121ad192f71b4f5f3e7187e7cdaedce11a24bd0567100465577d8e01a4a194595f28818d6517f52de8c2490fd1be
   languageName: node
   linkType: hard
 
@@ -2919,11 +2935,13 @@ __metadata:
     "@astrojs/mdx": "npm:4.3.3"
     "@astrojs/react": "npm:^4.3.0"
     "@astrojs/rss": "npm:4.0.12"
+    "@iconify-json/heroicons": "npm:^1.2.3"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@tailwindcss/vite": "npm:^4.1.10"
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     astro: "npm:5.12.9"
+    astro-heroicons: "npm:2.1.5-1"
     astro-icon: "npm:^1.1.5"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
