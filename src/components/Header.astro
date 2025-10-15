@@ -1,20 +1,26 @@
 ---
-
+const pages = [
+    { name: "Home", address: "/" },
+    { name: "Essays", address: "/blog/" },
+    { name: "Topics", address: "/topics/"},
+    { name: "Travels", address: "/travels/"},
+    { name: "About", address: "/about/" }
+]
 ---
 <nav class="bg-primary text-secondary shadow-lg shadow-primary/50">
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <div class="flex-shrink-0 text-2xl font-bold">
-                <a class="hover:text-accent transition" href="/">FlauFly</a>
+                <a class="font-pacifico hover:text-accent transition" href="/">FlauFly</a>
             </div>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-6 font-medium">
-                <a class="hover:text-accent transition" href="/">Home</a>
-                <a class="hover:text-accent transition" href="/blog/">Blog</a>
-                <a class="hover:text-accent transition" href="/topics/">Topics</a>
-                <a class="hover:text-accent transition" href="/travels/">Travels</a>
-                <a class="hover:text-accent transition" href="/about/">About</a>
+                {
+                    pages.map((item) => (
+                        <a class="hover:text-accent transition" href={item.address}>{item.name}</a>
+                    ))
+                }
             </div>
 
             <!-- Mobile Menu Button -->
@@ -28,11 +34,11 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 font-medium">
-        <a class="block hover:text-accent transition" href="/">Home</a>
-        <a class="block hover:text-accent transition" href="/blog/">Blog</a>
-        <a class="block hover:text-accent transition" href="/topics/">Topics</a>
-        <a class="hover:text-accent transition" href="/travels/">Travels</a>
-        <a class="block hover:text-accent transition" href="/about/">About</a>
+        {
+            pages.map((item) => (
+                <a class="block hover:text-accent transition" href={item.address}>{item.name}</a>
+            ))
+        }
     </div>  
 </nav>
 

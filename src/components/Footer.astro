@@ -1,5 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
+const socials = [
+  { name: "github", address: "https://github.com/FlauFly"},
+  { name: "bluesky", address: "https://bsky.app/profile/flaufly.bsky.social"},
+  { name: "mail", address: "mailto:tirhhe@gmail.com"},
+]
 ---
 <footer class="mt-auto bg-primary text-secondary inset-shadow-sm inset-shadow-primary/50">
   <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,15 +13,13 @@ import { Icon } from "astro-icon/components";
 
       <!-- Social Media icons -->
       <div class="flex space-x-6">
-        <a class="hover:text-accent transition" href="https://github.com/FlauFly">
-          <Icon name="github" size={32} />
-        </a>
-        <a class="hover:text-accent transition" href="https://bsky.app/profile/flaufly.bsky.social">
-          <Icon name="bluesky" size={32} />
-        </a>
-        <a class="hover:text-accent transition" href="mailto:tirhhe@gmail.com">
-          <Icon name="mail" size={32} />
-        </a>
+        {
+          socials.map((item) => (
+            <a class="hover:text-accent transition" href={item.address}>
+              <Icon name={item.name} size={32} />
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
