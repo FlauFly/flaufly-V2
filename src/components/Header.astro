@@ -7,18 +7,18 @@ const pages = [
     { name: "About", address: "/about/" }
 ]
 ---
-<nav class="bg-primary text-secondary shadow-lg shadow-primary/50">
+<nav class="bg-primary text-secondary shadow-lg shadow-primary/50 text-lg">
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <div class="flex-shrink-0 text-2xl font-bold">
-                <a class="font-pacifico hover:text-accent transition" href="/">FlauFly</a>
+                <a class="font-pacifico hover:text-3xl transition-all" href="/">FlauFly</a>
             </div>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-6 font-medium">
                 {
                     pages.map((item) => (
-                        <a class="hover:text-accent transition" href={item.address}>{item.name}</a>
+                        <a class="hover:underline decoration-2 transition" href={item.address}>{item.name}</a>
                     ))
                 }
             </div>
@@ -36,7 +36,7 @@ const pages = [
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 font-medium">
         {
             pages.map((item) => (
-                <a class="block hover:text-accent transition" href={item.address}>{item.name}</a>
+                <a class="block hover:underline decoration-2 transition" href={item.address}>{item.name}</a>
             ))
         }
     </div>  
