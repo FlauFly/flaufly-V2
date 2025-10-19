@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
-import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import icon from "astro-icon";
 import remarkToc from "remark-toc";
@@ -20,8 +19,4 @@ export default defineConfig({
     react(),
     icon(),
   ],
-
-  vite: {
-    plugins: [tailwindcss()],
-  },
 });

@@ -1,15 +1,140 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
-@theme {
-  --font-raleway: "Raleway";
-  --font-noto: "Noto Sans";
-  --font-pacifico: "Pacifico";
-
+:root {
+  /* Colors */
   --color-text: #03080c;
   --color-background: #f7fbfd;
   --color-primary: #3bb5fc;
   --color-secondary: #7d2b84;
   --color-accent: #d86eca;
+
+  /* Spacing */
+  --spacing-sm: 0.4rem;
+  --spacing-md: 0.6rem;
+  --spacing-base: 1rem;
+  --spacing-lg: 1.4rem;
+
+  /* Border radius */
+  --border-radius-sm: 0.2rem;
+  --border-radius-base: 0.4rem;
+  --border-radius-lg: 0.6rem;
+
+  /* Font sizes */
+  --text-size-sm: 0.875rem;
+  --text-size-base: 1rem;
+  --text-size-lg: 1.125rem;
+}
+
+/* CSS Reset */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+}
+
+/* Core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Default styles for a elements without class */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Making media elements block */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit font for buttons and input */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Prevent overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* __________ Base styles __________ */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+main {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-base);
+  padding-block: var(--spacing-base);
+}
+
+/* Small screen (sm) */
+@media screen and (width >= 640px) {
+  main {
+    padding-inline: var(--spacing-sm);
+  }
+}
+
+/* Medium screen (md) */
+@media screen and (width >= 768px) {
+  main {
+    padding-inline: var(--spacing-md);
+  }
+}
+
+/* Large screen (lg) */
+@media screen and (width >= 1024px) {
+  main {
+    padding-inline: var(--spacing-lg);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+button {
+  background-color: var(--color-secondary);
+  border: none;
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-base);
 }

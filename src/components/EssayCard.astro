@@ -1,12 +1,51 @@
 ---
 const { title, url, description, startDate, topics } = Astro.props
 ---
-<div class="rounded-md m-8 transition duration-300 hover:-translate-y-2 hover:bg-secondary grid-item" data-topics={topics?.join(",")} id="card">
+<div class="card grid-item" data-topics={topics?.join(",")} id="card">
     <a href={url}>
-        <div class="p-2">
-            <div class="text-2xl font-semibold">{title}</div>
-            <div class="opacity-50">{description}</div>
-            <div class="flex space-x-2"><p class="text-accent">Published:</p><p>{startDate.toLocaleDateString()}</p></div>
-        </div>
+            <p class="title">{title}</p>
+            <p class="description">{description}</p>
+            <div class="date">
+                <p>Published:</p>
+                <time>{startDate.toLocaleDateString("pl-PL")}</time>
+            </div>
     </a>
 </div>
+
+<style>
+    .card {
+        border-radius: var(--border-radius-base);
+        margin: var(--spacing-base);
+        padding: var(--spacing-base);
+        transition: all 0.3s;
+    }
+
+    .card:hover {
+        background-color: var(--color-secondary);
+        translate: calc(var(--spacing-base)) calc(-1 * var(--spacing-base));
+    }
+
+    .card a {
+        color: var(--color-text);
+    }
+
+    .title {
+        font-size: var(--text-size-lg);
+        font-weight: bold;
+    }
+
+    .description {
+        opacity: 0.5;
+    }
+
+    .date {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-base);
+    }
+    
+    .date p {
+        color: var(--color-accent);
+        font-weight: bold;
+    }
+</style>

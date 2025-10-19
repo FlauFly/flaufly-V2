@@ -2,10 +2,48 @@
 import EssayCard from "./EssayCard.astro"
 const { posts } = Astro.props
 ---
-<div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 bg-secondary/25 rounded-md">
+<div class="essays-list grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 bg-secondary/25 rounded-md">
 {
     posts.map((post: any) => (
     <EssayCard url={`/posts/${post.id}/`} title={post.data.title} description={post.data.description} startDate={post.data.startDate} topics={post.data.topics} />
     ))
 }
 </div>
+
+<style>
+    .essays-list {
+        border-radius: var(--border-radius-base);
+        display: grid;
+        position: relative;
+    }
+
+    .essays-list::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: var(--color-secondary);
+        opacity: 0.25;
+    }
+
+    @media screen and (width >= 640px) {
+        .essays-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (width >= 768px) {
+        .essays-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media screen and (width >= 1024px) {
+        .essays-list {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+</style>

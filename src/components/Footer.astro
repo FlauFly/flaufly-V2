@@ -6,21 +6,35 @@ const socials = [
   { name: "mail", address: "mailto:tirhhe@gmail.com"},
 ]
 ---
-<footer class="mt-auto bg-primary text-secondary inset-shadow-sm inset-shadow-primary/50">
-  <div class="mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16 items-center">
-      <div class="flex-shrink-0">© 2025 FlauFly</div>
+<footer>
+      <div>© 2025 FlauFly</div>
 
       <!-- Social Media icons -->
-      <div class="flex space-x-6">
+      <div class="socials">
         {
           socials.map((item) => (
-            <a class="hover:scale-125 transition" href={item.address}>
+            <a href={item.address}>
               <Icon name={item.name} size={32} />
             </a>
           ))
         }
       </div>
-    </div>
-  </div>
 </footer>
+
+<style>
+  footer {
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div {
+    padding: var(--spacing-base);
+  }
+
+  div.socials {
+    display: flex;
+    gap: var(--spacing-base);
+  }
+
+</style>
