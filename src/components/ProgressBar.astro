@@ -26,6 +26,10 @@
 
 <script>
     window.addEventListener('scroll', () => {
-  document.body.style.setProperty('--scroll', `${window.pageYOffset / (document.body.offsetHeight - window.innerHeight)}`);
+  document.body.style.setProperty('--scroll', `${window.pageYOffset / (document.body.scrollHeight - window.innerHeight)}`);
 }, false);
+
+console.log(window.pageYOffset)
+console.log(document.body.offsetHeight)
+console.log(window.innerHeight)
 </script>
