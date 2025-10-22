@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Arvo:wght@400;700&family=Lato&family=Twinkle+Star&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Lato&family=Lora:ital,wght@0,400..700;1,400..700&family=Twinkle+Star&display=swap");
 
 :root {
   /* Colors */
@@ -23,7 +23,7 @@
   --border-radius-lg: 0.6rem;
 
   /* Fonts */
-  --font-serif: "Arvo", serif;
+  --font-serif: "Lora", serif;
   --font-body: "Alegreya", serif;
   --font-sans: "Lato", sans-serif;
   --font-icon: "Twinkle Star", cursive;
