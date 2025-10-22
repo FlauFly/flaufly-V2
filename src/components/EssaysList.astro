@@ -14,34 +14,16 @@ const { posts } = Astro.props
     .essays-list {
         border-radius: var(--border-radius-base);
         display: grid;
-        position: relative;
-    }
 
-    .essays-list::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: var(--color-secondary);
-        opacity: 0.25;
-    }
-
-    @media screen and (width >= 640px) {
-        .essays-list {
+        @media screen and (width >= 640px) {
             grid-template-columns: repeat(2, 1fr);
         }
-    }
 
-    @media screen and (width >= 768px) {
-        .essays-list {
+        @media screen and (width >= 768px) {
             grid-template-columns: repeat(3, 1fr);
         }
-    }
 
-    @media screen and (width >= 1024px) {
-        .essays-list {
+        @media screen and (width >= 1024px) {
             grid-template-columns: repeat(4, 1fr);
         }
     }

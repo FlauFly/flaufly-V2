@@ -1,28 +1,232 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Arvo:wght@400;700&family=Lato&family=Twinkle+Star&display=swap");
 
 :root {
   /* Colors */
   --color-text: #03080c;
-  --color-background: #f7fbfd;
+  --color-background: #f0f8ff;
   --color-primary: #3bb5fc;
-  --color-secondary: #7d2b84;
-  --color-accent: #d86eca;
+  --color-primary-light: #89d3fd;
+  --color-primary-dark: #184865;
+  --color-accent: #c21dac;
+  --color-accent-light: #da77cd;
+  --color-accent-dark: #4e0c45;
 
   /* Spacing */
   --spacing-sm: 0.4rem;
   --spacing-md: 0.6rem;
   --spacing-base: 1rem;
-  --spacing-lg: 1.4rem;
+  --spacing-lg: 2rem;
 
   /* Border radius */
   --border-radius-sm: 0.2rem;
   --border-radius-base: 0.4rem;
   --border-radius-lg: 0.6rem;
 
+  /* Fonts */
+  --font-serif: "Arvo", serif;
+  --font-body: "Alegreya", serif;
+  --font-sans: "Lato", sans-serif;
+  --font-icon: "Twinkle Star", cursive;
+
   /* Font sizes */
   --text-size-sm: 0.875rem;
   --text-size-base: 1rem;
   --text-size-lg: 1.125rem;
+}
+
+/* Fluid sizing */
+/* @link https://utopia.fyi/space/calculator?c=360,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --fluid-min-width: 360;
+  --fluid-max-width: 1240;
+
+  --fluid-screen: 100vw;
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+}
+
+@media screen and (min-width: 1240px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+:root {
+  --fc-3xs-min: (var(--fc-s-min) * 0.25);
+  --fc-3xs-max: (var(--fc-s-max) * 0.25);
+
+  --fc-2xs-min: (var(--fc-s-min) * 0.5);
+  --fc-2xs-max: (var(--fc-s-max) * 0.5);
+
+  --fc-xs-min: (var(--fc-s-min) * 0.75);
+  --fc-xs-max: (var(--fc-s-max) * 0.75);
+
+  --fc-s-min: (var(--f-0-min, 18));
+  --fc-s-max: (var(--f-0-max, 20));
+
+  --fc-m-min: (var(--fc-s-min) * 1.5);
+  --fc-m-max: (var(--fc-s-max) * 1.5);
+
+  --fc-l-min: (var(--fc-s-min) * 2);
+  --fc-l-max: (var(--fc-s-max) * 2);
+
+  --fc-xl-min: (var(--fc-s-min) * 3);
+  --fc-xl-max: (var(--fc-s-max) * 3);
+
+  --fc-2xl-min: (var(--fc-s-min) * 4);
+  --fc-2xl-max: (var(--fc-s-max) * 4);
+
+  --fc-3xl-min: (var(--fc-s-min) * 6);
+  --fc-3xl-max: (var(--fc-s-max) * 6);
+
+  /* T-shirt sizes */
+  --space-3xs: calc(
+    ((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xs: calc(
+    ((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-xs: calc(
+    ((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-s: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
+  --space-m: calc(
+    ((var(--fc-m-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) *
+      var(--fluid-bp)
+  );
+  --space-l: calc(
+    ((var(--fc-l-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) *
+      var(--fluid-bp)
+  );
+  --space-xl: calc(
+    ((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xl: calc(
+    ((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-3xl: calc(
+    ((var(--fc-3xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-3xl-min)) *
+      var(--fluid-bp)
+  );
+
+  /* One-up pairs */
+  --space-3xs-2xs: calc(
+    ((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xs-xs: calc(
+    ((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-xs-s: calc(
+    ((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-s-m: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
+  --space-m-l: calc(
+    ((var(--fc-m-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) *
+      var(--fluid-bp)
+  );
+  --space-l-xl: calc(
+    ((var(--fc-l-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) *
+      var(--fluid-bp)
+  );
+  --space-xl-2xl: calc(
+    ((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xl-3xl: calc(
+    ((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-2xl-min)) *
+      var(--fluid-bp)
+  );
+
+  /* Custom pairs */
+  --space-s-l: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
+}
+
+/* Fluid typography */
+/* @link https://utopia.fyi/type/calculator?c=360,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --f--2-min: 12.5;
+  --f--2-max: 12.8;
+  --font-size-xs: calc(
+    ((var(--f--2-min) / 16) * 1rem) + (var(--f--2-max) - var(--f--2-min)) *
+      var(--fluid-bp)
+  );
+
+  --f--1-min: 15;
+  --f--1-max: 16;
+  --font-size-sm: calc(
+    ((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-0-min: 18;
+  --f-0-max: 20;
+  --font-size-base: calc(
+    ((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-1-min: 21.6;
+  --f-1-max: 25;
+  --font-size-md: calc(
+    ((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-2-min: 25.92;
+  --f-2-max: 31.25;
+  --font-size-lg: calc(
+    ((var(--f-2-min) / 16) * 1rem) + (var(--f-2-max) - var(--f-2-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-3-min: 31.1;
+  --f-3-max: 39.06;
+  --font-size-xl: calc(
+    ((var(--f-3-min) / 16) * 1rem) + (var(--f-3-max) - var(--f-3-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-4-min: 37.32;
+  --f-4-max: 48.83;
+  --font-size-2xl: calc(
+    ((var(--f-4-min) / 16) * 1rem) + (var(--f-4-max) - var(--f-4-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-5-min: 44.79;
+  --f-5-max: 61.04;
+  --font-size-3xl: calc(
+    ((var(--f-5-min) / 16) * 1rem) + (var(--f-5-max) - var(--f-5-min)) *
+      var(--fluid-bp)
+  );
+
+  --f-6-min: 53.75;
+  --f-6-max: 76.29;
+  --font-size-4xl: calc(
+    ((var(--f-6-min) / 16) * 1rem) + (var(--f-6-max) - var(--f-6-min)) *
+      var(--fluid-bp)
+  );
 }
 
 /* CSS Reset */
@@ -102,34 +306,59 @@ main {
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding-inline: var(--spacing-base);
-  padding-block: var(--spacing-base);
+  padding: var(--spacing-base);
 }
 
-/* Small screen (sm) */
-@media screen and (width >= 640px) {
-  main {
-    padding-inline: var(--spacing-sm);
+h1,
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  max-width: 1200px;
+}
+
+@media screen and (width <= 768px) {
+  h1 {
+    font-size: var(--font-size-2xl);
+    max-width: 100%;
   }
 }
 
-/* Medium screen (md) */
-@media screen and (width >= 768px) {
-  main {
-    padding-inline: var(--spacing-md);
+h2 {
+  font-size: calc(var(--font-size-xl) / 1.2);
+}
+
+@media screen and (width <= 768px) {
+  h2 {
+    font-size: var(--font-size-lg);
   }
 }
 
-/* Large screen (lg) */
-@media screen and (width >= 1024px) {
-  main {
-    padding-inline: var(--spacing-lg);
-  }
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+}
+
+p,
+ul,
+ol {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
 }
 
 a {
   text-decoration: none;
-  color: var(--color-secondary);
+  color: var(--color-accent);
+  font-weight: bold;
+
+  &:hover {
+    color: var(--color-primary);
+  }
 }
 
 button {

@@ -3,7 +3,7 @@ const { title, url, description, startDate, topics } = Astro.props
 ---
 <div class="card grid-item" data-topics={topics?.join(",")} id="card">
     <a href={url}>
-            <p class="title">{title}</p>
+            <h3 class="title">{title}</h3>
             <p class="description">{description}</p>
             <div class="date">
                 <p>Published:</p>

@@ -9,9 +9,7 @@ const pages = [
 ---
 <nav>
     <div class="not-expanded">
-            <div class="icon">
-                <a href="/">FlauFly</a>
-            </div>
+            <a class="icon" href="/">FlauFly</a>
 
             <!-- Desktop Menu -->
             <div class="desktop-menu">
@@ -42,14 +40,24 @@ const pages = [
 
 <style>
     nav {
-        background-color: var(--color-primary);
-        color: var(--color-secondary);
+        color: var(--color-accent);
         font-size: var(--text-size-lg);
         padding: var(--spacing-base);
+        margin-bottom: var(--spacing-lg)
+    }
+
+    nav a:not(.icon) {
+        
+    }
+
+    .icon {
+        color: var(--color-primary-dark);
+        font-family: var(--font-icon);
+        font-size: var(--font-size-xl);
     }
 
     button {
-        background-color: var(--color-primary);
+        background-color: var(--color-background);
         color: var(--color-secondary);
     }
 
