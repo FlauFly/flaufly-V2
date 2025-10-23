@@ -13,7 +13,7 @@ const socials = [
       <div class="socials">
         {
           socials.map((item) => (
-            <a href={item.address}>
+            <a class="social-icon" href={item.address}>
               <Icon name={item.name} size={32} />
             </a>
           ))
@@ -35,6 +35,15 @@ const socials = [
   div.socials {
     display: flex;
     gap: var(--spacing-base);
+  }
+
+  .social-icon {
+    color: var(--color-accent);
+    transition: 0.3s ease-out;
+
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
 </style>

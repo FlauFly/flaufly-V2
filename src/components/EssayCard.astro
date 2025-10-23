@@ -2,11 +2,11 @@
 const { title, url, description, startDate, topics } = Astro.props
 ---
 <div class="card grid-item" data-topics={topics?.join(",")} id="card">
-    <a href={url}>
+    <a class="card-link" href={url}>
             <h3 class="title">{title}</h3>
             <p class="description">{description}</p>
             <div class="date">
-                <p>Published:</p>
+                <span>Published:</span>
                 <time>{startDate.toLocaleDateString("pl-PL")}</time>
             </div>
     </a>
@@ -18,11 +18,17 @@ const { title, url, description, startDate, topics } = Astro.props
         margin: var(--spacing-base);
         padding: var(--spacing-base);
         transition: all 0.3s;
+        border-right: 0.1rem dashed var(--color-primary);
+        border-top: 0.1rem dashed var(--color-primary);
     }
 
     .card:hover {
         background-color: var(--color-secondary);
         translate: calc(var(--spacing-base)) calc(-1 * var(--spacing-base));
+    }
+
+    .card:hover h3 {
+        color: var(--color-primary);
     }
 
     .card a {
@@ -35,6 +41,7 @@ const { title, url, description, startDate, topics } = Astro.props
     }
 
     .description {
+        font-size: var(--font-size-sm);
         opacity: 0.5;
     }
 
@@ -42,9 +49,10 @@ const { title, url, description, startDate, topics } = Astro.props
         display: flex;
         flex-direction: row;
         gap: var(--spacing-base);
+        font-family: var(--font-sans);
     }
     
-    .date p {
+    .date span {
         color: var(--color-accent);
         font-weight: bold;
     }
