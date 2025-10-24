@@ -1534,13 +1534,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-heroicons@npm:2.1.5-1":
-  version: 2.1.5-1
-  resolution: "astro-heroicons@npm:2.1.5-1"
-  checksum: 10c0/f80d6891c9e5e479713d9ea15121b4b21e7d121ad192f71b4f5f3e7187e7cdaedce11a24bd0567100465577d8e01a4a194595f28818d6517f52de8c2490fd1be
-  languageName: node
-  linkType: hard
-
 "astro-icon@npm:^1.1.5":
   version: 1.1.5
   resolution: "astro-icon@npm:1.1.5"
@@ -2725,7 +2718,6 @@ __metadata:
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     astro: "npm:5.12.9"
-    astro-heroicons: "npm:2.1.5-1"
     astro-icon: "npm:^1.1.5"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"

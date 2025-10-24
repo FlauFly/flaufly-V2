@@ -8,13 +8,11 @@ const allPosts = (await getCollection("blog")).sort(
 );
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<h1>FlauFly</h1>
+	<h1>Garden</h1>
 	
 	<!-- List of posts -->
   <h2>Essays:</h2>
   <EssaysList posts={allPosts}/>
-
-  <div class="dividor">test</div>
 	
 </BaseLayout>
 

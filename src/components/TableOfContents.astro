@@ -23,7 +23,7 @@ console.log(headings);
           .filter(({ depth }) => depth >= 1 && depth < 4)
           .map((heading) => (
             <li class="toc-item" data-level={heading.depth}>
-            <a href={`#${heading.slug}`} class="toc-link">
+            <a href={`#${heading.slug}`}>
               {heading.text}
             </a>
           </li>
@@ -71,14 +71,6 @@ console.log(headings);
   }
   .toc-item[data-level="2"] .toc-link {
     margin-left: 24px;
-  }
-
-  .toc-link {
-    transition: all 0.3s cubic-bezier(0.2, 1, 0.8, 1);
-  }
-
-  .toc-link:hover {
-    color: var(--color-primary)
   }
 </style>
 
