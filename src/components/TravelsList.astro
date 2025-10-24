@@ -2,10 +2,30 @@
 import TravelCard from "./TravelCard.astro"
 const { posts } = Astro.props
 ---
-<div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 bg-secondary/25 rounded-md">
+<div class="travels-list">
 {
     posts.map((post: any) => (
     <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} />
     ))
 }
 </div>
+
+<style>
+    .travels-list {
+        border-radius: var(--border-radius-base);
+        display: grid;
+
+        @media screen and (width >= 640px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (width >= 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (width >= 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+</style>
