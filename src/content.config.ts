@@ -17,11 +17,13 @@ const blog = defineCollection({
 
 const travels = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/travels" }),
-  schema: z.object({
-    title: z.string(),
-    startDate: z.date(),
-    endDate: z.date(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      startDate: z.date(),
+      endDate: z.date(),
+      cover: image().optional(),
+    }),
 });
 // Export a single `collections` object to register your collection(s)
 export const collections = { blog, travels };

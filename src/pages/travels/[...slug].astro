@@ -5,7 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('travelogue');
+  const posts = await getCollection('travels');
 
   const headings = await Promise.all(
     posts.map(async (post) => {
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-    post: CollectionEntry<'travelogue'>;
+    post: CollectionEntry<'travels'>;
     headings: MarkdownHeading[];
 }
 
