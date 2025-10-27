@@ -6,38 +6,99 @@ const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
-  <div class="my-4 py-2 sm:m-6 sm:p-4 lg:m-8 lg:p-6">
     <!-- Title and description at the top -->
-    <div class="pb-8">
-      <div class="text-center text-4xl sm:text-5xl lg:text-6xl font-bold">{frontmatter.title}</div>
-      <div class="text-center opacity-50 text-base sm:text-lg lg:text-xl">{frontmatter.description}</div>
+    <div class="header">
+      <h1>{frontmatter.title}</h1>
+      <p class="description">{frontmatter.description}</p>
     </div>
     <!-- Metadata about article -->
-    <div class="flex justify-between border-t border-primary border-dotted pt-4">
-      <div>
-        <div class="flex gap-2">
-          <div class="text-accent">Started:</div>
-          <div>{frontmatter.startDate.toLocaleDateString()}</div>
+    <div class="metadata">
+      <div class="metadata-left">
+        <div class="date">
+          <span>Started:</span>
+          <date>{frontmatter.startDate.toLocaleDateString("pl-PL")}</date>
         </div>
-        <div class="flex gap-2">
-          <div class="text-accent">Updated:</div>
-          <div>{frontmatter.updated.toLocaleDateString()}</div>
+        <div class="date">
+          <span>Updated:</span>
+          <date>{frontmatter.updated.toLocaleDateString("pl-PL")}</date>
         </div>
-        <div class="flex gap-2">
-          <div class="text-accent">Writing stage:</div>
-          <div>{frontmatter.writingStage}</div>
+        <div class="writing-stage">
+          <span>Writing stage:</span>
+          <span>{frontmatter.writingStage}</span>
         </div>
       </div>
-      
-      <div class="flex gap-4">
-        {frontmatter.topics.map((topic: string) => (
-          <p><a class="font-bold transition text-accent hover:opacity-50" href={`/topics/${topic}`}>{topic}</a></p>
-        ))}
+      <div class="metadata-right">
+        <ul class="styled-links">
+          {frontmatter.topics.map((topic: string) => (
+              <li class="styled-link">
+                <a href={`/topics/${topic}`}>{topic}</a>
+              </li>
+          ))}
+        </ul>
       </div>
     </div>
-  </div>
 
   <ProseWrapper>
     <slot />
   </ProseWrapper>
 </BaseLayout>
+
+<style>
+  .header {
+    padding-bottom: var(--space-l);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-primary) ;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
+    opacity: 0.75;
+  }
+
+  .metadata {
+    padding-bottom: var(--space-m);
+    margin-bottom: var(--space-m);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .date {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+  
+  .date span {
+      color: var(--color-accent);
+      font-weight: bold;
+  }
+
+  .writing-stage {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+
+  .writing-stage span:first-child {
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .styled-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .styled-link {
+    margin-right: var(--space-xs);
+    margin-bottom: var(--space-3xs);
+  }
+</style>

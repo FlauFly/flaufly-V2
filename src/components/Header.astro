@@ -43,14 +43,9 @@ const pages = [
 
 <style>
     nav {
-        color: var(--color-accent);
         font-size: var(--text-size-lg);
         padding: var(--spacing-base);
         margin-bottom: var(--spacing-lg)
-    }
-
-    nav a:not(.icon) {
-        
     }
 
     .icon {
@@ -61,6 +56,10 @@ const pages = [
 
         &:hover {
             scale: 1.1;
+        }
+
+        &::after {
+            display: none;
         }
     }
 
