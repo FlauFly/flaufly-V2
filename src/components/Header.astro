@@ -1,7 +1,7 @@
 ---
 const pages = [
     { name: "Home", address: "/" },
-    { name: "Essays", address: "/blog/" },
+    { name: "Essays", address: "/essays/" },
     { name: "Topics", address: "/topics/"},
     { name: "Travels", address: "/travels/"},
     { name: "About", address: "/about/" }
@@ -32,7 +32,10 @@ const pages = [
     <div id="mobile-menu" class="mobile-expanded hidden">
         {
             pages.map((item) => (
-                <a href={item.address}>{item.name}</a>
+                <span>
+                    <a href={item.address}>{item.name}</a>
+                </span>
+
             ))
         }
     </div>  

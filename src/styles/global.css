@@ -392,6 +392,7 @@ button {
   padding: var(--spacing-base);
 }
 
+span,
 time {
   font-family: var(--font-sans);
 }

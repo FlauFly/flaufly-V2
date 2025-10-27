@@ -8,25 +8,17 @@ const { frontmatter, headings } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
-  <div class="my-4 py-2 sm:m-6 sm:p-4 lg:m-8 lg:p-6">
     <!-- Title and description at the top -->
-    <div class="pb-8">
-      <div class="text-center text-4xl sm:text-5xl lg:text-6xl font-bold">{frontmatter.title}</div>
-    </div>
+      <h1>{frontmatter.title}</h1>
     <!-- Metadata about article -->
-    <div class="flex justify-between border-t border-primary border-dotted pt-4">
-      <div>
-        <div class="flex gap-2">
-          <div class="text-accent">Started:</div>
-          <div>{frontmatter.startDate.toLocaleDateString()}</div>
-        </div>
-        <div class="flex gap-2">
-          <div class="text-accent">Finished:</div>
-          <div>{frontmatter.endDate.toLocaleDateString()}</div>
-        </div>
-      </div>
+    <div class="date">
+      <span class="text-accent">Started:</span>
+      <time>{frontmatter.startDate.toLocaleDateString("pl-PL")}</time>
     </div>
-  </div>
+    <div class="date">
+      <span class="text-accent">Finished:</span>
+      <time>{frontmatter.endDate.toLocaleDateString("pl-PL")}</time>
+    </div>
 
   <TableOfContents headings={headings} />
 
@@ -34,3 +26,21 @@ const { frontmatter, headings } = Astro.props;
     <slot />
   </ProseWrapper>
 </BaseLayout>
+
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  .date {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+  
+  .date span {
+      color: var(--color-accent);
+      font-weight: bold;
+  }  
+</style>
