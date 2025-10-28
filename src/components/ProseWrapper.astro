@@ -1,9 +1,28 @@
 ---
 ---
-<article 
-    class="prose prose-lg max-w-none
-    text-text prose-a:no-underline
-    transition prose-a:text-accent prose-a:hover:text-primary
-    prose-headings:text-primary prose-headings:font-raleway font-noto">
-    <slot />
+<article class="prose-wrapper">
+	<slot />
 </article>
+
+<style>
+    .prose-wrapper {
+		display: grid;
+		grid-template-columns: 1fr min(80ch, 100%) 1fr;
+		counter-reset: footnote-counter;
+		font-size: var(--font-size-base);
+	}
+
+    .prose-wrapper > :global(*) {
+		grid-column: 2;
+	}
+
+    .prose-wrapper > :global(p) {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--space-s);
+        line-height: var(--leading-base);
+    }
+
+    .prose-wrapper > :global(sup) {
+        line-height: 10px;
+    }
+</style>

@@ -32,6 +32,14 @@
   --text-size-sm: 0.875rem;
   --text-size-base: 1rem;
   --text-size-lg: 1.125rem;
+
+  /* Leading */
+  --leading-tighter: 110%;
+  --leading-tight: 120%;
+  --leading-snug: 130%;
+  --leading-base: 140%;
+  --leading-loose: 180%;
+  --leading-looser: 200%;
 }
 
 /* Fluid sizing */
@@ -395,4 +403,8 @@ button {
 span,
 time {
   font-family: var(--font-sans);
+}
+
+sup {
+  line-height: 0;
 }
