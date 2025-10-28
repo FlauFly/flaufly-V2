@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Topics from "../../components/Topics.astro";
 const allPosts = await getCollection("blog")
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
-const pageTitle = "Topic Index";
+const pageTitle = "Topics";
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Topics />
