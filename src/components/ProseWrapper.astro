@@ -18,11 +18,25 @@
 
     .prose-wrapper > :global(p) {
         font-size: var(--font-size-base);
-        margin-bottom: var(--space-s);
-        line-height: var(--leading-base);
+        margin-bottom: var(--space-m);
+        line-height: var(--leading-loose);
     }
 
-    .prose-wrapper > :global(sup) {
-        line-height: 10px;
+    @media (max-width: 767px) {
+        .prose-wrapper > :global(p) {
+            line-height: var(--leading-loose);
+        }
+    }
+
+    .prose-wrapper > :global(h2) {
+        margin: var(--space-s) 0 var(--space-m)
+    }
+
+    .prose-wrapper :global(a.data-footnote-backref) {
+        color: var(--color-accent);
+        transition: 0.3s ease-out;
+        &:hover {
+            color: var(--color-primary);
+        }
     }
 </style>

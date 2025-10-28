@@ -336,7 +336,7 @@ h1 {
 }
 
 h2 {
-  font-size: calc(var(--font-size-xl) / 1.2);
+  font-size: var(--font-size-xl);
 }
 
 @media screen and (width <= 768px) {
