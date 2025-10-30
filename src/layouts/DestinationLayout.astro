@@ -1,0 +1,75 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import ProseWrapper from '../components/ProseWrapper.astro';
+import { getCollection } from 'astro:content';
+const { destination } = Astro.props;
+
+// Finding travel code out of URL
+const currentPath = Astro.url.pathname;
+const travelCode = currentPath.replaceAll('/', '').replace('travels', '');
+
+const travelogues = (await getCollection("travelogues")).filter(
+  travelogue => travelogue.data.travel === travelCode
+).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+);
+
+/*
+const travelogues = (await getCollection("travelogues")).filter(
+  travelogue => travelogue.data.title === destination.title
+).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+)
+*/
+---
+<BaseLayout pageTitle={destination.title}>
+  <ProgressBar />
+    <!-- Title and description at the top -->
+      <h1>{destination.title}</h1>
+    <!-- Metadata about article -->
+    <div class="date">
+      <span class="text-accent">Started:</span>
+      <time>{destination.startDate.toLocaleDateString("pl-PL")}</time>
+    </div>
+    <div class="date">
+      <span class="text-accent">Finished:</span>
+      <time>{destination.endDate.toLocaleDateString("pl-PL")}</time>
+    </div>
+
+  <div>
+    {travelCode}
+  </div>
+  
+  <ul>
+    {
+      travelogues.map((travelogue) => (
+        <li>
+          {travelogue.data.title}
+        </li>
+      ))
+    }
+  </ul>
+
+  <ProseWrapper>
+    <slot />
+  </ProseWrapper>
+</BaseLayout>
+
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  .date {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+  
+  .date span {
+      color: var(--color-accent);
+      font-weight: bold;
+  }  
+</style>

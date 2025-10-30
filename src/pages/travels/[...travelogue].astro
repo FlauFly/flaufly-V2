@@ -1,11 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
-import TravelPostLayout from '../../layouts/TravelPostLayout.astro';
+import TravelogueLayout from '../../layouts/TravelogueLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('travels');
+  const posts = await getCollection('travelogues');
 
   const headings = await Promise.all(
     posts.map(async (post) => {
@@ -15,19 +15,19 @@ export async function getStaticPaths() {
   );
 
   return posts.map((post, index) => ({
-    params: { slug: post.id }, 
+    params: { travelogue: post.id }, 
     props: { post, headings: headings[index] },
   }));
 }
 
 type Props = {
-    post: CollectionEntry<'travels'>;
+    post: CollectionEntry<'travelogues'>;
     headings: MarkdownHeading[];
 }
 
 const { post, headings } = Astro.props;
 const { Content } = await render(post);
 ---
-<TravelPostLayout frontmatter={post.data} headings={headings}>
+<TravelogueLayout frontmatter={post.data} headings={headings}>
   <Content />
-</TravelPostLayout>
+</TravelogueLayout>

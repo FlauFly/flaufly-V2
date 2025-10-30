@@ -2,7 +2,8 @@
 import BaseLayout from './BaseLayout.astro';
 import ProgressBar from '../components/ProgressBar.astro';
 import ProseWrapper from '../components/ProseWrapper.astro';
-const { frontmatter } = Astro.props;
+import TableOfContents from '../components/TableOfContents.astro';
+const { frontmatter, headings } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
@@ -37,6 +38,10 @@ const { frontmatter } = Astro.props;
         </ul>
       </div>
     </div>
+
+  {(frontmatter.toc) &&
+    <TableOfContents headings={headings} />
+  }
 
   <ProseWrapper>
     <slot />

@@ -1,10 +1,14 @@
 ---
-import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import ProgressBar from '../components/ProgressBar.astro';
 import ProseWrapper from '../components/ProseWrapper.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 const { frontmatter, headings } = Astro.props;
+
+function hasTOC(data: any): data is { toc: boolean } {
+	return "toc" in data;
+}
+
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
@@ -12,15 +16,13 @@ const { frontmatter, headings } = Astro.props;
       <h1>{frontmatter.title}</h1>
     <!-- Metadata about article -->
     <div class="date">
-      <span class="text-accent">Started:</span>
-      <time>{frontmatter.startDate.toLocaleDateString("pl-PL")}</time>
+      <span class="text-accent">Date:</span>
+      <time>{frontmatter.date.toLocaleDateString("pl-PL")}</time>
     </div>
-    <div class="date">
-      <span class="text-accent">Finished:</span>
-      <time>{frontmatter.endDate.toLocaleDateString("pl-PL")}</time>
-    </div>
-
-  <TableOfContents headings={headings} />
+  
+  {(frontmatter.toc) &&
+    <TableOfContents headings={headings} />
+  }
 
   <ProseWrapper>
     <slot />
