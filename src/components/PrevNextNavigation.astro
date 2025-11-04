@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+const { frontmatter } = Astro.props;
+const travelCode = frontmatter.travel;
+
+const posts = (await getCollection("travelogues")).filter(
+  travelogue => travelogue.data.travel === travelCode
+).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+);
+
+const currentPostIndex = posts.findIndex((post: any) => post.id == Astro.params.travelogue);
+const previousPost = currentPostIndex === 0 ? undefined : posts[currentPostIndex - 1];
+const nextPost = currentPostIndex + 1 === posts.length ? undefined : posts[currentPostIndex + 1];
+
+
+---
+
+{
+  (previousPost || nextPost) && (
+    <nav>
+      { previousPost && ( <p>Previous: <a href={`/travels/${previousPost.id}/`}>{previousPost.data.title}</a></p> ) }
+      { nextPost && ( <p>Next: <a href={`/travels/${nextPost.id}/`}>{nextPost.data.title}</a></p> ) }
+    </nav>
+  )
+}

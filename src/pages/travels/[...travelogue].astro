@@ -5,7 +5,8 @@ import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('travelogues');
+  const posts = (await getCollection('travelogues'))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   const headings = await Promise.all(
     posts.map(async (post) => {
@@ -15,17 +16,26 @@ export async function getStaticPaths() {
   );
 
   return posts.map((post, index) => ({
-    params: { travelogue: post.id }, 
-    props: { post, headings: headings[index] },
+    params: { 
+      travelogue: post.id,
+      travelCode: post.data.travel, 
+    }, 
+    props: {
+      post,
+      prevPost: index < posts.length - 1 ? posts[index + 1] : null,
+      nextPost: index > 0 ? posts[index - 1] : null, 
+      headings: headings[index] },
   }));
 }
 
 type Props = {
     post: CollectionEntry<'travelogues'>;
+    prevPost: CollectionEntry<'travelogues'>;
+    nextPost: CollectionEntry<'travelogues'>;
     headings: MarkdownHeading[];
 }
 
-const { post, headings } = Astro.props;
+const { post, prevPost, nextPost, headings } = Astro.props;
 const { Content } = await render(post);
 ---
 <TravelogueLayout frontmatter={post.data} headings={headings}>

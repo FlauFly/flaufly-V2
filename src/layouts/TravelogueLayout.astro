@@ -5,9 +5,7 @@ import ProseWrapper from '../components/ProseWrapper.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 const { frontmatter, headings } = Astro.props;
 
-function hasTOC(data: any): data is { toc: boolean } {
-	return "toc" in data;
-}
+import PrevNextNavigation from '../components/PrevNextNavigation.astro';
 
 ---
 <BaseLayout pageTitle={frontmatter.title}>
@@ -27,6 +25,7 @@ function hasTOC(data: any): data is { toc: boolean } {
   <ProseWrapper>
     <slot />
   </ProseWrapper>
+  <PrevNextNavigation frontmatter={frontmatter} />
 </BaseLayout>
 
 <style>

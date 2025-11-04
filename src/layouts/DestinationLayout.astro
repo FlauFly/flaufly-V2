@@ -14,14 +14,6 @@ const travelogues = (await getCollection("travelogues")).filter(
 ).sort(
   (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
 );
-
-/*
-const travelogues = (await getCollection("travelogues")).filter(
-  travelogue => travelogue.data.title === destination.title
-).sort(
-  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
-)
-*/
 ---
 <BaseLayout pageTitle={destination.title}>
   <ProgressBar />
@@ -36,16 +28,14 @@ const travelogues = (await getCollection("travelogues")).filter(
       <span class="text-accent">Finished:</span>
       <time>{destination.endDate.toLocaleDateString("pl-PL")}</time>
     </div>
-
-  <div>
-    {travelCode}
-  </div>
   
   <ul>
     {
       travelogues.map((travelogue) => (
         <li>
-          {travelogue.data.title}
+          <a href={`/travels/${travelogue.id}`}>
+            {travelogue.data.title}
+          </a>
         </li>
       ))
     }
