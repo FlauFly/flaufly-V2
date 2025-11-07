@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import ProgressBar from '../components/ProgressBar.astro';
 import ProseWrapper from '../components/ProseWrapper.astro';
+import Image from 'astro/components/Image.astro';
 import { getCollection } from 'astro:content';
 const { destination } = Astro.props;
 
@@ -17,39 +18,63 @@ const travelogues = (await getCollection("travelogues")).filter(
 ---
 <BaseLayout pageTitle={destination.title}>
   <ProgressBar />
+    <!-- Flag or other icon header -->
+    {
+      (destination.cover) && (
+        <div class="image-wrapper">
+          <Image 
+            src={destination.cover}
+            alt=`${destination.title} flag`
+            width={200}
+            height={200}
+          />
+        </div>
+      )
+    }
     <!-- Title and description at the top -->
-      <h1>{destination.title}</h1>
+    <h1>{destination.title}</h1>
     <!-- Metadata about article -->
-    <div class="date">
-      <span class="text-accent">Started:</span>
-      <time>{destination.startDate.toLocaleDateString("pl-PL")}</time>
-    </div>
-    <div class="date">
-      <span class="text-accent">Finished:</span>
-      <time>{destination.endDate.toLocaleDateString("pl-PL")}</time>
+    <div class="metadata">
+      <div class="date">
+        <span class="text-accent">Started:</span>
+        <time>{destination.startDate.toLocaleDateString("pl-PL")}</time>
+      </div>
+      <div class="date">
+        <span class="text-accent">Finished:</span>
+        <time>{destination.endDate.toLocaleDateString("pl-PL")}</time>
+      </div>
     </div>
   
-  <ul>
-    {
-      travelogues.map((travelogue) => (
-        <li>
-          <a href={`/travels/${travelogue.id}`}>
-            {travelogue.data.title}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-
-  <ProseWrapper>
-    <slot />
-  </ProseWrapper>
-</BaseLayout>
-
+    <ProseWrapper>
+      <slot />
+      
+      <ul>
+      {
+          travelogues.map((travelogue) => (
+            <li>
+              <a href={`/travels/${travelogue.id}`}>
+                {travelogue.data.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </ProseWrapper>
+    
+  </BaseLayout>
+  
 <style>
   h1 {
     text-align: center;
+    padding-bottom: var(--space-l);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-primary) ;
   }
+
+  .metadata {
+    padding-bottom: var(--space-m);
+    margin-bottom: var(--space-m);
+  }  
 
   .date {
       display: flex;
@@ -61,5 +86,9 @@ const travelogues = (await getCollection("travelogues")).filter(
   .date span {
       color: var(--color-accent);
       font-weight: bold;
-  }  
+  }
+
+  .image-wrapper img {
+    margin: 0 auto;
+  }
 </style>

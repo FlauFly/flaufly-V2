@@ -10,12 +10,23 @@ import PrevNextNavigation from '../components/PrevNextNavigation.astro';
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
-    <!-- Title and description at the top -->
-      <h1>{frontmatter.title}</h1>
+    <!-- Title at the top -->
+    <h1>{frontmatter.title}</h1>
     <!-- Metadata about article -->
-    <div class="date">
-      <span class="text-accent">Date:</span>
-      <time>{frontmatter.date.toLocaleDateString("pl-PL")}</time>
+    <div class="metadata">
+      <div class="data">
+        <span class="data-key">Date:</span>
+        <time>{frontmatter.date.toLocaleDateString("pl-PL")}</time>
+      </div>
+      {
+        (frontmatter.location) && (
+        <div class="data">
+          <span class="data-key">Location: </span>
+          <span>{frontmatter.location}</span>
+        </div>
+        )
+
+      }
     </div>
   
   {(frontmatter.toc) &&
@@ -26,22 +37,39 @@ import PrevNextNavigation from '../components/PrevNextNavigation.astro';
     <slot />
   </ProseWrapper>
   <PrevNextNavigation frontmatter={frontmatter} />
+  <nav class="return">
+    Table of content <a href=`/travels/${frontmatter.travel}`>↩</a>
+  </nav>
+
 </BaseLayout>
 
 <style>
   h1 {
     text-align: center;
+    padding-bottom: var(--space-l);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-primary) ;
   }
 
-  .date {
+  .metadata {
+    padding-bottom: var(--space-m);
+    margin-bottom: var(--space-m);
+  }  
+
+  .data {
       display: flex;
       flex-direction: row;
       gap: var(--spacing-base);
       font-family: var(--font-sans);
   }
   
-  .date span {
+  .data .data-key {
       color: var(--color-accent);
       font-weight: bold;
-  }  
+  }
+
+  .return {
+    text-align: right;
+    margin-top: var(--space-l);
+  }
 </style>

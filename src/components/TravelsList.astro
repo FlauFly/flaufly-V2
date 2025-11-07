@@ -5,7 +5,7 @@ const { posts } = Astro.props
 <div class="travels-list">
 {
     posts.map((post: any) => (
-    <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} />
+    <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} cover={post.data.cover} />
     ))
 }
 </div>
@@ -13,19 +13,9 @@ const { posts } = Astro.props
 <style>
     .travels-list {
         border-radius: var(--border-radius-base);
-        display: grid;
-
-        @media screen and (width >= 640px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media screen and (width >= 768px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        @media screen and (width >= 1024px) {
-            grid-template-columns: repeat(4, 1fr);
-        }
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 
 </style>

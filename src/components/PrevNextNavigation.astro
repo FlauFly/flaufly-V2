@@ -25,3 +25,15 @@ const nextPost = currentPostIndex + 1 === posts.length ? undefined : posts[curre
     </nav>
   )
 }
+
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-l);
+  }
+
+  p > a {
+    margin-left: 0.5rem;
+  }
+</style>

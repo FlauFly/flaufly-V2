@@ -1,12 +1,74 @@
 ---
-const { title, url, startDate, endDate } = Astro.props
+const { title, url, startDate, endDate, cover } = Astro.props
+import Image from "astro/components/Image.astro"
 ---
 <div class="card">
     <a class="card-link" href={url}>
-        <div class="p-2">
-            <div class="text-2xl font-semibold">{title}</div>
-            <div class="flex space-x-2"><p class="text-accent">Started:</p><p>{startDate.toLocaleDateString()}</p></div>
-            <div class="flex space-x-2"><p class="text-accent">Returned:</p><p>{endDate.toLocaleDateString()}</p></div>
+            <!-- Flag or other icon header -->
+    {
+      (cover) && (
+        <div class="image-wrapper">
+          <Image 
+            src={cover}
+            alt=`${title} flag`
+            width={150}
+            height={150}
+          />
+        </div>
+      )
+    }
+        <h3 class="title">{title}</h3>
+        <div class="date">
+            <span>Started:</span>
+            <time>{startDate.toLocaleDateString("pl-PL")}</time>
+        </div>
+        <div class="date">
+            <span>Finished:</span>
+            <time>{endDate.toLocaleDateString("pl-PL")}</time>
         </div>
     </a>
 </div>
+
+<style>
+    .card {
+        border-radius: var(--border-radius-base);
+        margin: var(--spacing-base);
+        padding: var(--spacing-base);
+        transition: all 0.3s;
+    }
+
+    .card:hover {
+        background-color: var(--color-secondary);
+        transform: scale(110%)
+    }
+
+    .card:hover h3 {
+        color: var(--color-primary);
+    }
+
+    .card a {
+        color: var(--color-text);
+    }
+
+    .title {
+        font-size: var(--text-size-lg);
+        font-weight: bold;
+    }
+
+    .description {
+        font-size: var(--font-size-sm);
+        opacity: 0.5;
+    }
+
+    .date {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-base);
+        font-family: var(--font-sans);
+    }
+    
+    .date span {
+        color: var(--color-accent);
+        font-weight: bold;
+    }
+</style>

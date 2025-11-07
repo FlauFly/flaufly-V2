@@ -41,6 +41,7 @@ const travelogues = defineCollection({
       title: z.string(),
       date: z.date(),
       travel: z.string().optional(),
+      location: z.string().optional(),
     }),
 });
 

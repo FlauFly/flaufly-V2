@@ -353,6 +353,7 @@ h6 {
 }
 
 p,
+nav,
 ul,
 ol {
   font-family: var(--font-body);
