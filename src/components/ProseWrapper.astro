@@ -40,6 +40,11 @@
         }
     }
 
+    .prose-wrapper :global(sup > a) {
+        &:hover::after {
+            transform: scaleX(0);
+    }
+
     .prose-wrapper :global(ul) {
         list-style: none;
         padding-left: 1rem;
