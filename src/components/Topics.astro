@@ -6,12 +6,12 @@ const allPosts = (await getCollection("blog")).sort(
 );
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 ---
-<div class="flex">
-    <div class="text-lg p-2">Topics</div>
-    <div class="text-xl p-2 text-primary">|</div>
-    <div class="flex gap-4">
+<div class="topics-container">
+    <span>Topics</span>
+    <span class="separator">|</span>
+    <div>
         {topics.map((topic) => (
-            <button data-topic={topic} class="p-2 rounded-full transition hover:bg-secondary focus:bg-primary" id="topics">
+            <button data-topic={topic} id="topics">
                 {topic}
             </button>
         ))}
@@ -19,6 +19,23 @@ const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())
 </div>
 
 <EssaysList posts={allPosts} />
+
+<style>
+    .topics-container {
+        display: flex;
+        align-items: center;
+        gap: var(--space-m);
+        margin: var(--space-m) 0;
+        
+        span {
+            font-size: var(--font-size-md);
+        }
+    }
+
+    .separator {
+        color: var(--color-primary);
+    }
+</style>
 
 <script>
     function hideCards(e: Event) {

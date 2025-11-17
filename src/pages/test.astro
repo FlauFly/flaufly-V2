@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout pageTitle="test">
+    <button>Click me</button>
+</BaseLayout>
+
+<style>
+    button.pressed {
+        background-color: var(--color-accent);
+    }
+</style>
+
+<script>
+    const button = document.querySelector("button");
+    button?.addEventListener("click", () => (
+        button.classList.toggle("pressed")
+    ))
+</script>

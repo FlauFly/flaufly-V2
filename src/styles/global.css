@@ -18,9 +18,9 @@
   --spacing-lg: 2rem;
 
   /* Border radius */
-  --border-radius-sm: 0.2rem;
-  --border-radius-base: 0.4rem;
-  --border-radius-lg: 0.6rem;
+  --border-radius-sm: 0.6rem;
+  --border-radius-base: 1rem;
+  --border-radius-lg: 1.4rem;
 
   /* Fonts */
   --font-serif: "Lora", serif;
@@ -395,10 +395,13 @@ a:not([class]) {
 }
 
 button {
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   border: none;
-  border-radius: var(--border-radius-base);
-  padding: var(--spacing-base);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-2xs);
+  margin: var(--space-3xs);
+  font-family: var(--font-sans);
+  cursor: pointer;
 }
 
 span,

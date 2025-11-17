@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import ProseWrapper from '../components/ProseWrapper.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <ProgressBar />
+    <!-- Title and description at the top -->
+    <div class="header">
+      <h1>{frontmatter.title}</h1>
+      <p class="description">{frontmatter.description}</p>
+    </div>
+
+  <ProseWrapper>
+    <slot />
+  </ProseWrapper>
+</BaseLayout>
+
+<style>
+  .header {
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-l);
+    border-bottom: 1px dashed var(--color-primary) ;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
+    opacity: 0.75;
+  }
+</style>
