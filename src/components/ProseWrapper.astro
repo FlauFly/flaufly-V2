@@ -43,15 +43,20 @@
     .prose-wrapper :global(sup > a) {
         &:hover::after {
             transform: scaleX(0);
+        }
     }
 
     .prose-wrapper :global(ul) {
-        list-style: none;
+        list-style: square;
         padding-left: 1rem;
+        margin-bottom: var(--space-m);
     }
 
     .prose-wrapper :global(ul > li) {
         margin-bottom: var(--space-xs);
         line-height: var(--leading-snug);
+        &::marker {
+            color: var(--color-primary);
+        }
     }
 </style>

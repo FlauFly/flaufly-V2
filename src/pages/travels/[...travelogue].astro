@@ -35,7 +35,7 @@ type Props = {
     headings: MarkdownHeading[];
 }
 
-const { post, prevPost, nextPost, headings } = Astro.props;
+const { post, headings } = Astro.props;
 const { Content } = await render(post);
 ---
 <TravelogueLayout frontmatter={post.data} headings={headings}>
