@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('notesCollection');
+
+  const headings = await Promise.all(
+    posts.map(async (post) => {
+        const data = await render(post);
+        return data.headings;
+    })
+  );
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: { post, headings: headings[index] },
+  }));
+}
+
+type Props = {
+    post: CollectionEntry<'notesCollection'>;
+    headings: MarkdownHeading[];
+}
+
+const { post, headings } = Astro.props;
+const { Content } = await render(post);
+---
+<MarkdownPostLayout frontmatter={post.data} headings={headings}>
+  <Content />
+</MarkdownPostLayout>

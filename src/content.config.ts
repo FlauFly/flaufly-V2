@@ -24,7 +24,7 @@ const notesCollection = defineCollection({
     description: z.string(),
     startDate: z.date(),
     updated: z.date(),
-    type: z.literal("notes"),
+    type: z.literal("note"),
     topics: z.array(z.string()),
     writingStage: z.string(),
     toc: z.boolean().optional(),
