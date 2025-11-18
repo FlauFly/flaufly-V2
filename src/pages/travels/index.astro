@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TravelsList from '../../components/TravelsList.astro';
-const allPosts = (await getCollection("destinations")).sort(
+const allPosts = (await getCollection("destinationsCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );
 const pageTitle = "Travel Diaries";

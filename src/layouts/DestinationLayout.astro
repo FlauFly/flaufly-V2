@@ -10,7 +10,7 @@ const { destination } = Astro.props;
 const currentPath = Astro.url.pathname;
 const travelCode = currentPath.replaceAll('/', '').replace('travels', '');
 
-const travelogues = (await getCollection("travelogues")).filter(
+const travelogues = (await getCollection("traveloguesCollection")).filter(
   travelogue => travelogue.data.travel === travelCode
 ).sort(
   (a, b) => a.data.date.valueOf() - b.data.date.valueOf()

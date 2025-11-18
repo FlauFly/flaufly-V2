@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import EssaysList from "./EssaysList.astro";
-const allPosts = (await getCollection("blog")).sort(
+const allPosts = (await getCollection("essaysCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
@@ -35,6 +35,21 @@ const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())
     .separator {
         color: var(--color-primary);
     }
+
+    button {
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-2xs);
+        margin: var(--space-3xs);
+        font-family: var(--font-sans);
+        cursor: pointer;
+    }
+
+    button.selected {
+        background-color: var(--color-accent);
+        color: var(--color-background);
+    }
 </style>
 
 <script>
@@ -47,6 +62,7 @@ const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())
             let matchesTopic = !selectedTopic || cardTopics.includes(selectedTopic);
             card.classList.toggle("hidden", !matchesTopic);
         });
+        selectedButton.classList.toggle("selected");
     }
 
     const buttons = document.querySelectorAll("#topics");
