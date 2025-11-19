@@ -7,7 +7,7 @@
   --color-primary: #3bb5fc;
   --color-primary-light: #89d3fd;
   --color-primary-dark: #184865;
-  --color-accent: #c21dac;
+  --color-accent: rgb(194, 29, 172);
   --color-accent-light: #da77cd;
   --color-accent-dark: #4e0c45;
 
@@ -385,7 +385,7 @@ a:not([class]) {
     left: 0;
     background-color: var(--color-accent);
     transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
   }
 
   &:hover::after {

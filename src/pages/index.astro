@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro"
 import EssaysList from "../components/EssaysList.astro";
+import SectionSeparator from "../components/SectionSeparator.astro";
 const pageTitle = "FlauFly";
 const allPosts = (await getCollection("essaysCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
@@ -13,6 +14,7 @@ const allPosts = (await getCollection("essaysCollection")).sort(
 	<!-- List of posts -->
   <h2>Essays:</h2>
   <EssaysList posts={allPosts}/>
+  <SectionSeparator section="Essays"/>
 	
 </BaseLayout>
 
