@@ -12,9 +12,8 @@ const allPosts = (await getCollection("essaysCollection")).sort(
 	<h1>Garden</h1>
 	
 	<!-- List of posts -->
-  <h2>Essays:</h2>
-  <EssaysList posts={allPosts}/>
   <SectionSeparator section="Essays"/>
+  <EssaysList posts={allPosts}/>
 	
 </BaseLayout>
 

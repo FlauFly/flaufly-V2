@@ -3,11 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout pageTitle="test">
     <section>
-    <h2>Essays</h2>
-    <h3>Test</h3>
-    <div class="noise">
-        <h2>Essays</h2>
-    </div>
+        <div class="isolate">
+            <div class="noise"></div>
+            <div class="overlay overlay-1"></div>
+        </div>
     </section>
 </BaseLayout>
 
@@ -18,15 +17,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     max-width: 100vw;
     margin-left: calc(-50vw + 50%);
     height: 100px;
+    margin-bottom: var(--space-2xl);
     }
 
     .noise {
+    height: 100%;
+    background: linear-gradient(20deg, var(--color-primary), transparent), url(../assets/noise.svg);   
+    filter: contrast(290%) brightness(100%);
+    }
+
+    .isolate {
     isolation: isolate;
     position: relative;
     width: 100%;
     height: 100%;
+    }
+
+    .overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(20deg, var(--color-primary), rgba(194,29,172,0.5)), url(../assets/noise.svg);   
-    filter: contrast(290%) brightness(100%);
+    background: var(--color-accent);
+    mix-blend-mode: color-burn;
     }
 </style>

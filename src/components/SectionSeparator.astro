@@ -3,9 +3,7 @@ const { section } = Astro.props;
 ---
 <section>
     <h2>{section}</h2>
-    <div class="noise">
-        
-    </div>
+    <div class="noise"></div>
 </section>
 
 <style>
@@ -14,8 +12,8 @@ const { section } = Astro.props;
     width: 100vw;
     max-width: 100vw;
     margin-left: calc(-50vw + 50%);
-    height: 100px;
-    margin-bottom: var(--space-3xl);
+    height: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
     }
 
     .noise {
@@ -32,10 +30,10 @@ const { section } = Astro.props;
     width: 100%;
     max-width: 80rem;
     margin-inline: auto;
-    padding: var(--space-m);
+    padding-inline: var(--space-m);
     font-weight: 700;
     position: relative;
-    top: 80px;
     z-index: 100;
+    top: var(--space-xl);
     }
 </style>
