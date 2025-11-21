@@ -1,12 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import EssaysList from '../../components/GridList.astro';
 import GridList from '../../components/GridList.astro';
 import EssayCard from '../../components/EssayCard.astro';
+import NoteCard from '../../components/NoteCard.astro';
 
 export async function getStaticPaths() {
-    const allPosts = await getCollection("essaysCollection");
+    const essays = await getCollection("essaysCollection");
+    const notes = await getCollection("notesCollection");
+    const allPosts = [...essays, ...notes];
 
     const uniqueTopics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 
@@ -25,15 +27,16 @@ const { posts } = Astro.props;
 <BaseLayout pageTitle={topic}>
   <p>Posts tagged with {topic}</p>
   <GridList>
-      {
-          posts.map((essay: any) => (
-              <EssayCard 
-              url={`/essays/${essay.id}/`} 
-              title={essay.data.title} 
-              description={essay.data.description} 
-              startDate={essay.data.startDate} 
-              topics={essay.data.topics} />
-          ))
-      }
+    {
+      posts.map((post: any) => (
+        (post.data.type === "essay") &&
+        <EssayCard 
+        url={`/essays/${post.id}/`} 
+        title={post.data.title} 
+        description={post.data.description} 
+        startDate={post.data.startDate} 
+        topics={post.data.topics} />
+    ))
+    }
   </GridList>
 </BaseLayout>

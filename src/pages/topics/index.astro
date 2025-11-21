@@ -1,37 +1,61 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Topics from "../../components/Topics.astro";
 
 // Get all collections
-const allPosts = await getCollection("essaysCollection")
+const essays = await getCollection("essaysCollection");
+const notes = await getCollection("notesCollection");
+const allPosts = [...essays, ...notes]
+
+
 const topics = [...new Set(allPosts.map((post: any) => post.data.topics).flat())];
 const pageTitle = "Topics";
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <Topics />
-    <div class="topics">
-        {topics.map((topic) => (
-            <p class="topic"><a href={`/topics/${topic}`}>{topic}</a></p>
-        ))}
-    </div>
+  <div class="topics-container">
+      <span>Topics</span>
+      <span class="separator">|</span>
+      <div>
+          {topics.map((topic) => (
+              <button data-topic={topic} id="topics">
+                  <a href={`/topics/${topic}`} class="button-link">{topic}</a>
+              </button>
+          ))}
+      </div>
+  </div>
 </BaseLayout>
 <style>
-  a {
-    color: #00539F;
-  }
+    .topics-container {
+        display: flex;
+        align-items: center;
+        gap: var(--space-m);
+        margin: var(--space-m) 0;
+        
+        span {
+            font-size: var(--font-size-md);
+        }
+    }
 
-  .topics {
-    display: flex;
-    flex-wrap: wrap;
-  }
+    .separator {
+        color: var(--color-primary);
+    }
 
-  .topic {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
+    button {
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-2xs);
+        margin: var(--space-3xs);
+        font-family: var(--font-sans);
+        cursor: pointer;
+    }
+
+    button.selected {
+        background-color: var(--color-accent);
+        color: var(--color-background);
+    }
+
+    button a {
+      color: var(--color-text);
+    }
 </style>
