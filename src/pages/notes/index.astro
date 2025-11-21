@@ -14,7 +14,12 @@ const notes = (await getCollection("notesCollection")).sort(
     <div class="notes-list">
         {
             notes.map((note: any) => (
-                <NoteCard url={`/notes/${note.id}/`} title={note.data.title} description={note.data.description} startDate={note.data.startDate} topics={note.data.topics} />
+                <NoteCard 
+                url={`/notes/${note.id}/`} 
+                title={note.data.title} 
+                description={note.data.description} 
+                startDate={note.data.startDate} 
+                topics={note.data.topics} />
             ))
         }
     </div>

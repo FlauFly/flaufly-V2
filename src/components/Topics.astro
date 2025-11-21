@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import EssaysList from "./EssaysList.astro";
+import EssaysList from "./GridList.astro";
 const allPosts = (await getCollection("essaysCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );

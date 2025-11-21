@@ -1,17 +1,11 @@
 ---
-import EssayCard from "./EssayCard.astro"
-const { posts } = Astro.props
 ---
-<div class="essays-list">
-{
-    posts.map((post: any) => (
-    <EssayCard url={`/essays/${post.id}/`} title={post.data.title} description={post.data.description} startDate={post.data.startDate} topics={post.data.topics} />
-    ))
-}
+<div class="grid-list">
+    <slot />
 </div>
 
 <style>
-    .essays-list {
+    .grid-list {
         border-radius: var(--border-radius-base);
         display: grid;
 
