@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GridList from '../../../components/GridList.astro';
+import EssayCard from '../../../components/EssayCard.astro';
+import { getCollection } from 'astro:content';
+const pageTitle = "Books";
+
+const essays = (await getCollection("essaysCollection")).sort(
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
+);
+---
+<BaseLayout pageTitle={pageTitle}>
+  <h1>Books</h1>
+  <p>Collection of thoughts and reviews from various media</p>
+  <GridList>
+      {
+          essays.map((essay: any) => (
+              <EssayCard 
+              url={`/essays/${essay.id}/`} 
+              title={essay.data.title} 
+              description={essay.data.description} 
+              startDate={essay.data.startDate} 
+              topics={essay.data.topics} />
+          ))
+      }
+  </GridList>
+</BaseLayout>
