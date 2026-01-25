@@ -62,10 +62,48 @@ const traveloguesCollection = defineCollection({
     }),
 });
 
+// Library / media collections, I put every medium in separate collection
+const booksCollection = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    finished: z.date(),
+  }),
+});
+
+const moviesCollection = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  schema: z.object({
+    title: z.string(),
+    finished: z.date(),
+  }),
+});
+
+const showsCollection = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  schema: z.object({
+    title: z.string(),
+    finished: z.date(),
+  }),
+});
+
+const gamesCollection = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  schema: z.object({
+    title: z.string(),
+    finished: z.date(),
+  }),
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   essaysCollection,
   notesCollection,
   destinationsCollection,
   traveloguesCollection,
+  booksCollection,
+  moviesCollection,
+  showsCollection,
+  gamesCollection
 };
