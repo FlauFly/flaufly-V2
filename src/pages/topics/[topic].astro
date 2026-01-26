@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GridList from '../../components/GridList.astro';
-import EssayCard from '../../components/EssayCard.astro';
-import NoteCard from '../../components/NoteCard.astro';
+import EssayCard from '../../components/cards/EssayCard.astro';
+import NoteCard from '../../components/cards/NoteCard.astro';
 
 export async function getStaticPaths() {
     const essays = await getCollection("essaysCollection");

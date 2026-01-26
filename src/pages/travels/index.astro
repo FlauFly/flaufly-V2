@@ -1,13 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TravelsList from '../../components/TravelsList.astro';
-const allPosts = (await getCollection("destinationsCollection")).sort(
+import TravelCard from '../../components/cards/TravelCard.astro'
+const destinations = (await getCollection("destinationsCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );
 const pageTitle = "Travel Diaries";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>This is where I will post about my trips abroad.</p>
-  <TravelsList posts={allPosts}/>
+  <div class="travels-list">
+{
+    destinations.map((post: any) => (
+    <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} cover={post.data.cover} />
+    ))
+}
+  </div>
+  
 </BaseLayout>
+
+<style>
+    .travels-list {
+        border-radius: var(--border-radius-base);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+</style>
