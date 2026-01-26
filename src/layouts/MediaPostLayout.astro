@@ -1,0 +1,91 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import ProseWrapper from '../components/ProseWrapper.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <ProgressBar />
+    <!-- Title and description at the top -->
+    <div class="header">
+      <h1>{frontmatter.title}</h1>
+      <p class="description">{frontmatter.description}</p>
+    </div>
+    <!-- Metadata about article -->
+    <div class="metadata">
+      <div class="metadata-left">
+        <div class="date">
+          <span>Started:</span>
+          <date>{frontmatter.finished.toLocaleDateString("pl-PL")}</date>
+        </div>
+      </div>
+      <div class="metadata-right">
+        <p></p>
+      </div>
+    </div>
+
+  <ProseWrapper>
+    <slot />
+  </ProseWrapper>
+</BaseLayout>
+
+<style>
+  .header {
+    padding-bottom: var(--space-l);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-primary) ;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
+    opacity: 0.75;
+  }
+
+  .metadata {
+    padding-bottom: var(--space-m);
+    margin-bottom: var(--space-m);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .date {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+  
+  .date span {
+      color: var(--color-accent);
+      font-weight: bold;
+  }
+
+  .writing-stage {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-base);
+      font-family: var(--font-sans);
+  }
+
+  .writing-stage span:first-child {
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .styled-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .styled-link {
+    margin-right: var(--space-xs);
+    margin-bottom: var(--space-3xs);
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+const { title, url, finished } = Astro.props
+---
+<div class="card grid-item" id="card">
+    <a class="card-link" href={url}>
+            <h3 class="title">{title}</h3>
+            <div class="date">
+                <span>Published:</span>
+                <time>{finished.toLocaleDateString("pl-PL")}</time>
+            </div>
+    </a>
+</div>
+
+<style>
+    .card {
+        border-radius: var(--border-radius-base);
+        margin: var(--spacing-base);
+        padding: var(--spacing-base);
+        transition: all 0.3s;
+        border: 0.3rem double var(--color-primary);
+    }
+
+    .card:hover {
+        background-color: var(--color-primary-light);
+        translate: calc(var(--spacing-base)) calc(-1 * var(--spacing-base));
+    }
+
+    .card:hover h3 {
+        color: var(--color-text);
+    }
+
+    .card a {
+        color: var(--color-text);
+    }
+
+    .title {
+        font-size: var(--text-size-lg);
+        font-weight: bold;
+    }
+
+    .description {
+        font-size: var(--font-size-sm);
+        opacity: 0.5;
+    }
+
+    .date {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-base);
+        font-family: var(--font-sans);
+    }
+    
+    .date span {
+        color: var(--color-accent);
+        font-weight: bold;
+    }
+
+    .card.hidden {
+        display: none;
+    }
+</style>

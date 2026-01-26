@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GridList from '../../../components/GridList.astro';
-import EssayCard from '../../../components/EssayCard.astro';
+import GameCard from '../../../components/cards/GameCard.astro';
 import { getCollection } from 'astro:content';
 const pageTitle = "Games";
 
-const essays = (await getCollection("essaysCollection")).sort(
-  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
+const games = (await getCollection("gamesCollection")).sort(
+  (a, b) => b.data.finished.valueOf() - a.data.finished.valueOf() // sorting by reverse chronological order
 );
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -14,13 +14,11 @@ const essays = (await getCollection("essaysCollection")).sort(
   <p>Collection of thoughts and reviews from various media</p>
   <GridList>
       {
-          essays.map((essay: any) => (
-              <EssayCard 
-              url={`/essays/${essay.id}/`} 
-              title={essay.data.title} 
-              description={essay.data.description} 
-              startDate={essay.data.startDate} 
-              topics={essay.data.topics} />
+          games.map((game: any) => (
+              <GameCard 
+              url={`/library/games/${game.id}/`} 
+              title={game.data.title} 
+              finished={game.data.finished} />
           ))
       }
   </GridList>

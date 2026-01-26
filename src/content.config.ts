@@ -73,7 +73,7 @@ const booksCollection = defineCollection({
 });
 
 const moviesCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/movies" }),
   schema: z.object({
     title: z.string(),
     finished: z.date(),
@@ -81,7 +81,7 @@ const moviesCollection = defineCollection({
 });
 
 const showsCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/shows" }),
   schema: z.object({
     title: z.string(),
     finished: z.date(),
@@ -89,7 +89,7 @@ const showsCollection = defineCollection({
 });
 
 const gamesCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/books" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/library/games" }),
   schema: z.object({
     title: z.string(),
     finished: z.date(),
