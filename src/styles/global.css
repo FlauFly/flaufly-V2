@@ -405,8 +405,10 @@ button {
 }
 
 span,
-time {
+time,
+date {
   font-family: var(--font-sans);
+  font-size: var(--font-size-base);
 }
 
 sup {

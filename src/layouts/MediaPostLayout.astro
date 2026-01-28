@@ -10,7 +10,7 @@ const { frontmatter } = Astro.props;
     <!-- Title and description at the top -->
     <div class="header">
       <h1>{frontmatter.title}</h1>
-      <p class="description">{frontmatter.description}</p>
+      <h2>{frontmatter.author}</h2>
     </div>
     <!-- Metadata about article -->
     <div class="metadata">
@@ -37,8 +37,12 @@ const { frontmatter } = Astro.props;
     border-bottom: 1px dashed var(--color-primary) ;
   }
 
-  h1 {
+  h1, h2 {
     text-align: center;
+  }
+
+  h2 {
+    opacity: 0.6;
   }
 
   .description {
