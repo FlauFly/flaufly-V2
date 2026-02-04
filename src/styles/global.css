@@ -314,7 +314,7 @@ main {
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding: var(--spacing-base);
+  padding: var(--space-s);
 }
 
 h1,

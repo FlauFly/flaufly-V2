@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GridList from '../../components/GridList.astro';
 import EssayCard from '../../components/cards/EssayCard.astro';
 import { getCollection } from 'astro:content';
+import SectionSeparator from '../../components/SectionSeparator.astro';
 const pageTitle = "Essays";
 
 const essays = (await getCollection("essaysCollection")).sort(
@@ -10,6 +11,7 @@ const essays = (await getCollection("essaysCollection")).sort(
 );
 ---
 <BaseLayout pageTitle={pageTitle}>
+  <SectionSeparator section="Essays" />
   <h1>Essays</h1>
   <p>Long-form opinionated writing</p>
   <GridList>
