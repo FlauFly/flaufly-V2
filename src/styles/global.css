@@ -256,6 +256,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
 /* Core body defaults */
 body {
   min-height: 100vh;
@@ -276,6 +283,7 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 /* Inherit font for buttons and input */
@@ -405,8 +413,7 @@ button {
 }
 
 span,
-time,
-date {
+time {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
 }

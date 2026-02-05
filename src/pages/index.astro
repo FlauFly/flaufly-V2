@@ -5,6 +5,8 @@ import GridList from "../components/GridList.astro";
 import EssayCard from "../components/cards/EssayCard.astro";
 import NoteCard from "../components/cards/NoteCard.astro";
 import SectionSeparator from "../components/SectionSeparator.astro";
+import { Image } from "astro:assets";
+import intro from "../assets/intro.jpg"
 const pageTitle = "FlauFly";
 
 // Loading writing categories
@@ -14,9 +16,34 @@ const essays = (await getCollection("essaysCollection")).sort(
 const notes = (await getCollection("notesCollection")).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf() // sorting by reverse chronological order
 );
+
+const navigationPages = [
+	{name: "Essays", address: "/essays", description: "— Long form, opinionated writing"},
+	{name: "Notes", address: "/notes", description: "— Messy exploratory writing"},
+	{name: "Travels", address: "/travels", description: "— Collection of travelogues"},
+	{name: "Library", address: "/library", description: "— Thoughts and reviews from various media"},
+	{name: "Explore", address: "/explore", description: "— General navigation hub"}
+]
 ---
 <BaseLayout pageTitle={pageTitle}>
 	<h1>Garden</h1>
+
+	<div class="introduction">
+		<div>
+			<span>Welcome to my small corner of the Internet</span>
+			<ul>
+				{
+					navigationPages.map((page: any) => (
+						<li class="navigation-link">
+							<a href={page.address}>{page.name}</a>
+							<span class="navigation-description">{page.description}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<Image src={intro} alt="Alley in backwaters of Kerala" layout="constrained"/>	
+	</div>
 	
 	<!-- List of posts -->
   <SectionSeparator section="Essays"/>
@@ -49,11 +76,28 @@ const notes = (await getCollection("notesCollection")).sort(
 </BaseLayout>
 
 <style>
-	.my-name {
-		color: var(--color-primary);
+	.introduction {
+		display: flex;
+		flex-direction: column-reverse;
+
+		@media screen and (width >= 768px) {
+			display: grid;
+			grid-template-columns: 2fr 3fr;
+		}
 	}
 
-	.dividor {
-		background-color: var(--color-primary);
+	.navigation-description {
+		filter: blur(3px);
+		transition: 0.3s ease-out;
+		cursor: pointer;
+	}
+
+	.navigation-link {
+		padding-top: var(--space-2xs);
+	}
+
+	.navigation-link:hover .navigation-description,
+	.navigation-link:focus {
+		filter: blur(0);
 	}
 </style>
