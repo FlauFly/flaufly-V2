@@ -25,7 +25,7 @@ const { frontmatter } = Astro.props;
       <div class="metadata-left">
         <div class="date">
           <span>Started:</span>
-          <date>{frontmatter.finished.toLocaleDateString("pl-PL")}</date>
+          <time>{frontmatter.finished.toLocaleDateString("pl-PL")}</time>
         </div>
       </div>
       <div class="metadata-right">
