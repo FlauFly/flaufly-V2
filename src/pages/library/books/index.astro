@@ -18,7 +18,8 @@ const books = (await getCollection("booksCollection")).sort(
               <BookCard 
               url={`/library/books/${book.id}/`} 
               title={book.data.title} 
-              finished={book.data.finished} />
+              finished={book.data.finished}
+              cover={book.data.cover} />
           ))
       }
   </GridList>

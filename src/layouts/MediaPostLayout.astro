@@ -2,13 +2,21 @@
 import BaseLayout from './BaseLayout.astro';
 import ProgressBar from '../components/ProgressBar.astro';
 import ProseWrapper from '../components/ProseWrapper.astro';
-import TableOfContents from '../components/TableOfContents.astro';
+import { Image } from 'astro:assets';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar />
     <!-- Title and description at the top -->
     <div class="header">
+      {
+        (frontmatter.cover) &&
+        <Image
+          src={frontmatter.cover}
+          alt=`${frontmatter.title} cover`
+          width={300}
+        />
+      }
       <h1>{frontmatter.title}</h1>
       <h2>{frontmatter.author}</h2>
     </div>
@@ -34,11 +42,10 @@ const { frontmatter } = Astro.props;
   .header {
     padding-bottom: var(--space-l);
     margin-bottom: var(--space-xs);
-    border-bottom: 1px dashed var(--color-primary) ;
-  }
-
-  h1, h2 {
-    text-align: center;
+    border-bottom: 1px dashed var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h2 {

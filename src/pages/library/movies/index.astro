@@ -18,7 +18,8 @@ const movies = (await getCollection("moviesCollection")).sort(
               <MovieCard 
               url={`/library/movies/${movie.id}/`} 
               title={movie.data.title} 
-              finished={movie.data.finished} />
+              finished={movie.data.finished}
+              cover={movie.data.cover} />
           ))
       }
   </GridList>

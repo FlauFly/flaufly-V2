@@ -12,7 +12,13 @@ const pageTitle = "Travel Diaries";
   <div class="travels-list">
 {
     destinations.map((post: any) => (
-    <TravelCard url={`/travels/${post.id}/`} title={post.data.title} startDate={post.data.startDate} endDate={post.data.endDate} cover={post.data.cover} />
+    <TravelCard 
+    url={`/travels/${post.id}/`} 
+    title={post.data.title} 
+    startDate={post.data.startDate} 
+    endDate={post.data.endDate} 
+    cover={post.data.cover}
+    />
     ))
 }
   </div>

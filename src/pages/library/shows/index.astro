@@ -18,7 +18,8 @@ const shows = (await getCollection("showsCollection")).sort(
               <ShowCard
               url={`/library/shows/${show.id}/`} 
               title={show.data.title} 
-              finished={show.data.finished} />
+              finished={show.data.finished}
+              cover={show.data.cover} />
           ))
       }
   </GridList>

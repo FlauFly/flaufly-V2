@@ -1,11 +1,20 @@
 ---
-const { title, url, finished } = Astro.props
+import { Image } from "astro:assets"
+const { title, url, finished, cover } = Astro.props
 ---
 <div class="card grid-item" id="card">
     <a class="card-link" href={url}>
+            {
+                (cover) &&
+                <Image
+                src={cover}
+                alt=`${title} cover`
+                width={250}
+                />
+            }   
             <h3 class="title">{title}</h3>
             <div class="date">
-                <span>Published:</span>
+                <span>Finished:</span>
                 <time>{finished.toLocaleDateString("pl-PL")}</time>
             </div>
     </a>
