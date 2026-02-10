@@ -402,7 +402,6 @@ a:not([class]) {
   }
 }
 
-/*
 button {
   background-color: var(--color-primary);
   border: none;
@@ -412,7 +411,6 @@ button {
   font-family: var(--font-sans);
   cursor: pointer;
 }
-*/
 
 span,
 time {
