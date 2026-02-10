@@ -1,7 +1,11 @@
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <circle fill="#3bb5fc" 
-    r="60"
-    cx="100"
-    cy="100"
-  />
+<svg 
+    width="80" 
+    height="80"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+>
+      <circle cx='50' cy='50' r='40' style='fill:#3bb5fc;;'/>
+      <path d='M50 10 A 20 20 0 0 1 50 50 A 20 20 0 0 0 50 90 A 40 40 0 0 0 50 10' style='fill:#c21dac;'/>
+      <circle cx='50' cy='30' r='7' style='fill:#c21dac;'/>
+      <circle cx='50' cy='70' r='7' style='fill:#3bb5fc;'/>
 </svg>

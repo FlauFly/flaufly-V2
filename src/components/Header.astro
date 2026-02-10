@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro"
 const pages = [
     { name: "Essays", address: "/essays/" },
     { name: "Notes", address: "/notes/"},
@@ -10,7 +11,10 @@ const pages = [
 ---
 <nav>
     <div class="not-expanded">
-            <a class="icon" href="/">FlauFly</a>
+            <a class="icon-container" href="/">
+                <Icon />
+                <span class="icon">FlauFly</span>
+            </a>
 
             <!-- Desktop Menu -->
             <div class="desktop-menu">

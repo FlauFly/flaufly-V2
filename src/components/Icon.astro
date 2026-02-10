@@ -1,0 +1,55 @@
+---
+---
+
+<div class="wrapper">
+    <button>
+        <svg 
+            width="70" 
+            height="70"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <text 
+                x="30" 
+                y="150"
+                font-size="190"
+                font-family="var(--font-sans)"
+                font-weight="bold"
+                fill="var(--color-accent)" 
+                class="pink"
+                >
+                F
+                </text>
+            <text 
+                x="100" 
+                y="100" 
+                transform="rotate(180) translate(10 50)" 
+                transform-origin="140 100"
+                font-size="190"
+                font-family="var(--font-sans)"
+                font-weight="bold"
+                fill="var(--color-primary)" 
+                class="blue">
+                F
+            </text>
+        </svg>
+    </button>
+</div>
+
+<style>
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        border: none;
+        background-color: var(--color-background);
+        transition: transform 1s ease-in-out;
+    }
+
+    button:hover {
+        transform: rotate(180deg);
+    }
+</style>
