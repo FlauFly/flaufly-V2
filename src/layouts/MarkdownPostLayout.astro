@@ -52,15 +52,13 @@ const { frontmatter, headings } = Astro.props;
   .header {
     padding-bottom: var(--space-l);
     margin-bottom: var(--space-xs);
-    border-bottom: 1px dashed var(--color-primary) ;
-  }
-
-  h1 {
-    text-align: center;
+    border-bottom: 1px dashed var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .description {
-    text-align: center;
     opacity: 0.75;
   }
 
