@@ -15,6 +15,7 @@ const socials = [
           socials.map((item) => (
             <a class="social-icon" href={item.address}>
               <Icon name={item.name} size={32} />
+              <span class="sr-only">{item.name} icon</span>
             </a>
           ))
         }

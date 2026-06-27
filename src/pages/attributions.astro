@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Image from "astro/components/Image.astro";
+import AttributionCard from "../components/cards/AttributionCard.astro";
+import GridList from "../components/GridList.astro";
+
+const pageTitle = "Attributions";
+const attributions = await getCollection('attributionsCollection');
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h1>Attributions</h1>
+    <p>On this website I try to use images either made by myself or those in open access. There are multiple types of open access licenses and most of them require to attribute to author and/or link to source. It's not the case for public domain, but I will try to provide sources, where I taken public domain images from.</p>
+    <GridList>
+        {
+            attributions.map(attribution => (
+                <Image 
+                    src={import(`../assets/essays/${attribution.id}.jpg`)} 
+                    alt={attribution.data.alt}
+                    width={300}
+                />
+            ))
+        }
+    </GridList>
+</BaseLayout>
+
+

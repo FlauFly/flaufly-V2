@@ -1,5 +1,5 @@
 // Import the glob loader
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
 // Define a `loader` and `schema` for each collection
@@ -104,6 +104,10 @@ const gamesCollection = defineCollection({
     }),
 });
 
+const attributionsCollection = defineCollection({
+  loader: file("./src/assets/attributions.json"),
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   essaysCollection,
@@ -113,5 +117,6 @@ export const collections = {
   booksCollection,
   moviesCollection,
   showsCollection,
-  gamesCollection
+  gamesCollection,
+  attributionsCollection
 };
