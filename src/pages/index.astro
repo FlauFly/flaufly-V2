@@ -48,16 +48,17 @@ const navigationPages = [
 	<!-- List of posts -->
   <SectionSeparator section="Essays"/>
   <GridList>
-	{
+      {
 		essays.map((essay: any) => (
 			<EssayCard 
 			url={`/essays/${essay.id}/`} 
-			title={essay.data.title} 
-			description={essay.data.description} 
+			title={essay.data.title}
+			description={essay.data.description}
+			cover={essay.data.cover}
 			startDate={essay.data.startDate} 
 			topics={essay.data.topics} />
-	))
-	}
+		))
+      }
   </GridList>
   <SectionSeparator section="Notes" />
   <GridList>

@@ -18,12 +18,22 @@ const essays = (await getCollection("essaysCollection")).sort(
       {
           essays.map((essay: any) => (
               <EssayCard 
-              url={`/essays/${essay.id}/`} 
-              title={essay.data.title} 
-              description={essay.data.description} 
-              startDate={essay.data.startDate} 
-              topics={essay.data.topics} />
+                url={`/essays/${essay.id}/`} 
+                title={essay.data.title}
+                description={essay.data.description}
+                cover={essay.data.cover}
+                startDate={essay.data.startDate} 
+                topics={essay.data.topics} />
           ))
       }
   </GridList>
 </BaseLayout>
+
+<style>
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+  }
+</style>

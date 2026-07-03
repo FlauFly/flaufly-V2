@@ -3,19 +3,26 @@ import { file, glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
 // Define a `loader` and `schema` for each collection
+
 const essaysCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/essays" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    startDate: z.date(),
-    updated: z.date(),
-    type: z.literal("essay"),
-    topics: z.array(z.string()),
-    writingStage: z.string(),
-    toc: z.boolean().optional(),
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/essays/",
   }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      cover: image().optional(),
+      startDate: z.date(),
+      updated: z.date(),
+      type: z.literal("essay"),
+      topics: z.array(z.string()),
+      writingStage: z.string(),
+      toc: z.boolean().optional(),
+    }),
 });
+
 
 const notesCollection = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/notes" }),

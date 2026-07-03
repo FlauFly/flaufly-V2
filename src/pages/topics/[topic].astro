@@ -33,7 +33,8 @@ const { posts } = Astro.props;
         <EssayCard 
         url={`/essays/${post.id}/`} 
         title={post.data.title} 
-        description={post.data.description} 
+        description={post.data.description}
+        cover={post.data.cover}
         startDate={post.data.startDate} 
         topics={post.data.topics} />
     ))
