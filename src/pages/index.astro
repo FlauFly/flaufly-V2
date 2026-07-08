@@ -47,7 +47,7 @@ const navigationPages = [
 	
 	<!-- List of posts -->
   <SectionSeparator section="Essays"/>
-  <GridList>
+  <div class="cards-container">
       {
 		essays.map((essay: any) => (
 			<EssayCard 
@@ -55,11 +55,12 @@ const navigationPages = [
 			title={essay.data.title}
 			description={essay.data.description}
 			cover={essay.data.cover}
-			startDate={essay.data.startDate} 
+			startDate={essay.data.startDate}
+			updated={essay.data.updated} 
 			topics={essay.data.topics} />
 		))
       }
-  </GridList>
+  </div>
   <SectionSeparator section="Notes" />
   <GridList>
 	{
@@ -101,4 +102,11 @@ const navigationPages = [
 	.navigation-link:focus {
 		filter: blur(0);
 	}
+
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+  }
 </style>

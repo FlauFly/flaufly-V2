@@ -26,7 +26,7 @@ const { posts } = Astro.props;
 ---
 <BaseLayout pageTitle={topic}>
   <p>Posts tagged with {topic}</p>
-  <GridList>
+  <div class="cards-container">
     {
       posts.map((post: any) => (
         (post.data.type === "essay") &&
@@ -35,9 +35,19 @@ const { posts } = Astro.props;
         title={post.data.title} 
         description={post.data.description}
         cover={post.data.cover}
-        startDate={post.data.startDate} 
+        startDate={post.data.startDate}
+        updated={post.data.updated} 
         topics={post.data.topics} />
     ))
     }
-  </GridList>
+  </div>
 </BaseLayout>
+
+<style>
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+  }
+</style>
