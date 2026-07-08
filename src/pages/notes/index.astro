@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoteCard from "../../components/cards/NoteCard.astro";
+import GridList from "../../components/GridList.astro";
 import { getCollection } from "astro:content";
 const pageTitle = "Notes"
 
@@ -11,7 +12,7 @@ const notes = (await getCollection("notesCollection")).sort(
 <BaseLayout pageTitle={pageTitle}>
     <h1>Notes</h1>
     <p>Messy exploratory writing where I try to figure things out</p>
-    <div class="notes-list">
+    <GridList>
         {
             notes.map((note: any) => (
                 <NoteCard 
@@ -22,5 +23,5 @@ const notes = (await getCollection("notesCollection")).sort(
                 topics={note.data.topics} />
             ))
         }
-    </div>
+    </GridList>
 </BaseLayout>

@@ -1,59 +1,60 @@
 ---
 const { title, url, description, startDate, topics } = Astro.props
 ---
-<div class="card grid-item" data-topics={topics?.join(",")} id="card">
-    <a class="card-link" href={url}>
+<a href={url} class="card grid-item" data-topics={topics?.join(",")} id="card">
+        <div class="intro">
             <h3 class="title">{title}</h3>
             <p class="description">{description}</p>
-            <div class="date">
-                <span>Published:</span>
-                <time>{startDate.toLocaleDateString("pl-PL")}</time>
-            </div>
-    </a>
-</div>
+        </div>
+        <div class="date">
+            <span>Published:</span>
+            <time>{startDate.toLocaleDateString("pl-PL")}</time>
+        </div>
+</a>
 
 <style>
     .card {
-        border-radius: var(--border-radius-base);
-        margin: var(--spacing-base);
-        padding: var(--spacing-base);
+        margin: var(--space-2xs);
+        padding: var(--space-2xs);
         transition: all 0.3s;
-        border: 0.3rem double var(--color-primary);
+        border: 5px solid var(--color-primary);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: var(--color-text);
     }
 
     .card:hover {
         background-color: var(--color-primary-light);
-        translate: calc(var(--spacing-base)) calc(-1 * var(--spacing-base));
-    }
-
-    .card:hover h3 {
-        color: var(--color-text);
-    }
-
-    .card a {
-        color: var(--color-text);
+        translate: calc(var(--space-3xs)) calc(-1 * var(--space-3xs));
     }
 
     .title {
-        font-size: var(--text-size-lg);
+        font-size: var(--font-size-md);
         font-weight: bold;
+        text-align: center;
     }
 
     .description {
         font-size: var(--font-size-sm);
-        opacity: 0.5;
     }
 
     .date {
         display: flex;
         flex-direction: row;
-        gap: var(--spacing-base);
+        gap: var(--space-3xs);
         font-family: var(--font-sans);
+        font-size: var(--font-size-sm);
     }
     
     .date span {
         color: var(--color-accent);
         font-weight: bold;
+    }
+
+    .date span,
+    .date time {
+        font-size: var(--font-size-sm);
     }
 
     .card.hidden {

@@ -5,46 +5,55 @@ const { title, url, description, cover, startDate, updated, topics } = Astro.pro
 
 const wasModified = startDate.toLocaleDateString("pl-PL") !== updated.toLocaleDateString("pl-PL");
 ---
-<div class="card" data-topics={topics?.join(",")} id="card">
-    <a class="card-link" href={url}>
-            <Image
-                src={cover}
-                alt=`${title} flag`
-                fit='cover'
-                layout='full-width'
-            />
-            <div class="metadata">
-                <div class="metadata-info">
-                    <h3 class="title">{title}</h3>
-                    <p class="description">{description}</p>
-                    <div class="date">
-                        <span>Published:</span>
-                        <time>{startDate.toLocaleDateString("pl-PL")}</time>
-                    </div>
-                    { 
-                        wasModified &&
-                        (<div class="date">
-                            <span>Updated:</span>
-                            <time>{updated.toLocaleDateString("pl-PL")}</time>
-                        </div>)
-                    }
+<a class="card" data-topics={topics?.join(",")} id="card" href={url}>
+        <Image
+            src={cover}
+            alt=`cover of ${title}`
+            fit='cover'
+            layout='full-width'
+        />
+        <div class="metadata">
+            <div class="metadata-info">
+                <h3 class="title">{title}</h3>
+                <p class="description">{description}</p>
+                <div class="date">
+                    <span>Published:</span>
+                    <time>{startDate.toLocaleDateString("pl-PL")}</time>
                 </div>
-                <div class="topic-cloud">
-                    {
-                        topics.map((topic: any) => (
-                            <span class="topic-box">{topic}</span>
-                        ))
-                    }
-                </div>
+                { 
+                    wasModified &&
+                    (<div class="date">
+                        <span>Updated:</span>
+                        <time>{updated.toLocaleDateString("pl-PL")}</time>
+                    </div>)
+                }
             </div>
-    </a>
-</div>
+            <div class="topic-cloud">
+                {
+                    topics.map((topic: any) => (
+                        <span class="topic-box">{topic}</span>
+                    ))
+                }
+            </div>
+        </div>
+</a>
 
 <style>
     .card {
         transition: all 0.3s;
         border: 0.3rem solid var(--color-primary);
         margin-inline: var(--space-xs);
+        display: flex;
+        gap: var(--space-3xs);
+        color: var(--color-text);
+        flex-direction: column;
+        text-align: center;
+
+        @media screen and (width >= 1024px) {
+            display: grid;
+            grid-template-columns: 40% 1fr;
+            text-align: unset;
+        }
     }
 
     .card:hover {
@@ -72,21 +81,8 @@ const wasModified = startDate.toLocaleDateString("pl-PL") !== updated.toLocaleDa
         display: none;
     }
 
-    .card-link {
-        display: flex;
-        gap: var(--space-3xs);
-        color: var(--color-text);
-        flex-direction: column;
-        text-align: center;
-
-        @media screen and (width >= 1024px) {
-            display: grid;
-            grid-template-columns: 35% 1fr;
-            text-align: unset;
-        }
-    }
-
     .metadata {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

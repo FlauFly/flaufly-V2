@@ -46,34 +46,41 @@ const navigationPages = [
 	</div>
 	
 	<!-- List of posts -->
-  <SectionSeparator section="Essays"/>
-  <div class="cards-container">
-      {
-		essays.map((essay: any) => (
-			<EssayCard 
-			url={`/essays/${essay.id}/`} 
-			title={essay.data.title}
-			description={essay.data.description}
-			cover={essay.data.cover}
-			startDate={essay.data.startDate}
-			updated={essay.data.updated} 
-			topics={essay.data.topics} />
-		))
-      }
-  </div>
-  <SectionSeparator section="Notes" />
-  <GridList>
-	{
-		notes.map((note: any) => (
-			<NoteCard 
-			url={`/notes/${note.id}/`} 
-			title={note.data.title} 
-			description={note.data.description} 
-			startDate={note.data.startDate} 
-			topics={note.data.topics} />
-	))
-	}
-  </GridList>
+	<section class="garden-section">
+		<section class="essays-section">
+			<SectionSeparator section="Essays"/>
+			<div class="cards-container">
+			{
+			essays.map((essay: any) => (
+				<EssayCard 
+				url={`/essays/${essay.id}/`} 
+				title={essay.data.title}
+				description={essay.data.description}
+				cover={essay.data.cover}
+				startDate={essay.data.startDate}
+				updated={essay.data.updated} 
+				topics={essay.data.topics} />
+				))
+			}
+			</div>
+		</section>
+	
+		<section class="notes-section">
+			<SectionSeparator section="Notes" />
+			<GridList>
+		  {
+			  notes.map((note: any) => (
+				  <NoteCard 
+				  url={`/notes/${note.id}/`} 
+				  title={note.data.title} 
+				  description={note.data.description} 
+				  startDate={note.data.startDate} 
+				  topics={note.data.topics} />
+		  ))
+		  }
+			</GridList>
+		</section>
+	</section>
 	
 </BaseLayout>
 
@@ -108,5 +115,25 @@ const navigationPages = [
     flex-direction: column;
     gap: var(--space-xs);
     margin-top: var(--space-xs);
+
+	@media screen and (width >= 768px) and (width < 1024px) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+  }
+
+  .essays-section {
+	grid-area: essays;
+  }
+
+  .notes-section {
+	grid-area: notes;
+  }
+
+  .garden-section {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: "essays" "notes";
   }
 </style>
