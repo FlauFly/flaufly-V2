@@ -1,6 +1,8 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import { Icon } from 'astro-icon/components';
+import { ChevronUp } from '@lucide/astro';
+import { ChevronDown } from '@lucide/astro';
 
 interface Props {
   headings: MarkdownHeading[];
@@ -13,7 +15,7 @@ console.log(headings);
 
   <div class="collapse-header">
     <h4>Table of Contents</h4>
-    <Icon name={"heroicons:chevron-down"} size={24} class="arrow-icon" />
+    <ChevronDown size={24} class="arrow-icon" />
   </div>
   <div class="collapse-content">
     <nav class="toc">

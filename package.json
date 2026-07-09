@@ -12,6 +12,7 @@
     "@astrojs/mdx": "4.3.3",
     "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "4.0.12",
+    "@lucide/astro": "^1.23.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "astro": "5.12.9",

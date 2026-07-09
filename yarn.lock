@@ -870,6 +870,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lucide/astro@npm:^1.23.0":
+  version: 1.23.0
+  resolution: "@lucide/astro@npm:1.23.0"
+  peerDependencies:
+    astro: ^4 || ^5 || ^6 || ^7
+  checksum: 10c0/1fe72a45cb6dd2d2e072e7b5ee21f6953f5c0628d039860830c43dc1aef059ddcb38ab1f1ada37cfad27a67709fab2f95882708e7fb877460e0b3293d1808b7f
+  languageName: node
+  linkType: hard
+
 "@mdx-js/mdx@npm:^3.1.0":
   version: 3.1.0
   resolution: "@mdx-js/mdx@npm:3.1.0"
@@ -2690,6 +2699,7 @@ __metadata:
     "@astrojs/mdx": "npm:4.3.3"
     "@astrojs/react": "npm:^4.3.0"
     "@astrojs/rss": "npm:4.0.12"
+    "@lucide/astro": "npm:^1.23.0"
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     astro: "npm:5.12.9"
