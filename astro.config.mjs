@@ -11,6 +11,11 @@ export default defineConfig({
   site: "https://flaufly.com",
   markdown: {
     remarkPlugins: [[remarkToc, { heading: "contents", maxDepth: 3 }]],
+    remarkRehype: {
+      footnoteLabelProperties: {
+        className: ['footnotes-heading']
+      }
+    }
   },
   integrations: [
     mdx({
