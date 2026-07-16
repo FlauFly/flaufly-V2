@@ -16,6 +16,11 @@
   --border-radius-base: 1rem;
   --border-radius-lg: 1.4rem;
 
+  /* Content width */
+  --content-width-base: 65ch;
+  --content-width-medium: 80ch;
+  --content-width-full: 100%;
+
   /* Fonts */
   --font-serif: "Quintessential", serif;
   --font-body: "Alegreya", serif;

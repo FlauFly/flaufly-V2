@@ -7,12 +7,14 @@
 <style>
     .prose-wrapper {
 		display: grid;
-		grid-template-columns: 1fr min(65ch, 100%) 1fr;
+		grid-template-columns: 1fr min(var(--content-width-base), 100%) 1fr;
 		font-size: var(--font-size-base);
 	}
 
     .prose-wrapper > :global(*) {
 		grid-column: 2;
+        width: min(var(--content-width-base), 100% - var(--space-m));
+        justify-self: center;
 	}
 
     .prose-wrapper > :global(p) {
