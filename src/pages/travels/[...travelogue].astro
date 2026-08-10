@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import TravelogueLayout from '../../layouts/TravelogueLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
+// Component imports
+import ArticleImage from '../../components/ArticleImage.astro';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('traveloguesCollection'))
@@ -37,7 +39,9 @@ type Props = {
 
 const { post, headings } = Astro.props;
 const { Content } = await render(post);
+
+const components = { ArticleImage }
 ---
 <TravelogueLayout frontmatter={post.data} headings={headings}>
-  <Content />
+  <Content components={components} />
 </TravelogueLayout>

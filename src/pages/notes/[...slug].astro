@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
+// Component imports
+import ArticleImage from '../../components/ArticleImage.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('notesCollection');
@@ -27,7 +29,9 @@ type Props = {
 
 const { post, headings } = Astro.props;
 const { Content } = await render(post);
+
+const components = { ArticleImage }
 ---
 <MarkdownPostLayout frontmatter={post.data} headings={headings}>
-  <Content />
+  <Content components={components} />
 </MarkdownPostLayout>

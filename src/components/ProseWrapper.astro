@@ -11,13 +11,34 @@
 		font-size: var(--font-size-base);
 	}
 
-    .prose-wrapper > :global(*) {
+    .prose-wrapper > :global(*):not(.content-image) {
 		grid-column: 2;
         width: min(var(--content-width-base), 100% - var(--space-m));
         justify-self: center;
 	}
 
-    .prose-wrapper > :global(p) {
+    /* Images: no padding, full width as default */
+
+    .prose-wrapper > :global(.content-image) {
+        grid-column: 1 / -1;
+        padding: 0;
+        justify-self: center;
+    }
+
+    .prose-wrapper > :global(.content-image.normal) {
+        max-width: var(--content-width-base);
+    }
+
+    .prose-wrapper > :global(.content-image.medium) {
+        max-width: var(--content-width-medium);
+    }
+
+    .prose-wrapper > :global(.content-image.full) {
+        max-width: var(--content-width-full);
+    }
+
+    .prose-wr
+    apper > :global(p) {
         font-size: var(--font-size-base);
         margin-bottom: var(--space-m);
         line-height: var(--leading-base);

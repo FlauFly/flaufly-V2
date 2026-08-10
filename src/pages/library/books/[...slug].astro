@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import MediaPostLayout from '../../../layouts/MediaPostLayout.astro';
 import type { CollectionEntry } from 'astro:content';
+// Component imports
+import ArticleImage from '../../../components/ArticleImage.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('booksCollection');
@@ -18,7 +20,9 @@ type Props = {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const components = { ArticleImage }
 ---
 <MediaPostLayout frontmatter={post.data}>
-  <Content />
+  <Content components={components} />
 </MediaPostLayout>
