@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { unified } from '@astrojs/markdown-remark'
 
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -10,17 +11,17 @@ import remarkToc from "remark-toc";
 export default defineConfig({
   site: "https://flaufly.com",
   markdown: {
-    remarkPlugins: [[remarkToc, { heading: "contents", maxDepth: 3 }]],
-    remarkRehype: {
-      footnoteLabelProperties: {
-        className: ['footnotes-heading']
+    processor: unified({
+      remarkPlugins: [[remarkToc, { heading: "contents", maxDepth: 3 }]],
+      remarkRehype: {
+        footnoteLabelProperties: {
+          className: ['footnotes-heading']
+        }
       }
-    }
+    }),
   },
   integrations: [
-    mdx({
-      remarkPlugins: [[remarkToc, { heading: "contents  ", maxDepth: 3 }]],
-    }),
+    mdx(),
     react(),
     icon(),
   ],
