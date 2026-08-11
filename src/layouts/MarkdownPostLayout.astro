@@ -15,15 +15,15 @@ const { frontmatter, headings } = Astro.props;
     <!-- Metadata about article -->
     <div class="metadata">
       <div class="metadata-left">
-        <div class="date">
+        <div class="date info">
           <span>Started:</span>
           <time>{frontmatter.startDate.toLocaleDateString("pl-PL")}</time>
         </div>
-        <div class="date">
+        <div class="date info">
           <span>Updated:</span>
           <time>{frontmatter.updated.toLocaleDateString("pl-PL")}</time>
         </div>
-        <div class="writing-stage">
+        <div class="writing-stage info">
           <span>Writing stage:</span>
           <span>{frontmatter.writingStage}</span>
         </div>
@@ -104,5 +104,10 @@ const { frontmatter, headings } = Astro.props;
   .styled-link {
     margin-right: var(--space-xs);
     margin-bottom: var(--space-3xs);
+  }
+
+  .info {
+    display: flex;
+    gap: var(--space-3xs);
   }
 </style>
