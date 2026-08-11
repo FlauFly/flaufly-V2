@@ -25,6 +25,16 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob`)
     {description && <figcaption>{description}</figcaption>}
 </figure>
 
+<style>
+    figure {
+        margin-bottom: var(--space-m);
+    }
+
+    figcaption {
+        text-align: center;
+    }
+</style>
+
 
 
 

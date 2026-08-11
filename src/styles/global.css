@@ -18,7 +18,7 @@
 
   /* Content width */
   --content-width-base: 65ch;
-  --content-width-medium: 80ch;
+  --content-width-medium: 90ch;
   --content-width-full: 100%;
 
   /* Fonts */
@@ -410,6 +410,11 @@ time {
 
 sup {
   line-height: 0;
+}
+
+figcaption {
+  font-family: var(--font-body);
+  font-style: italic;
 }
 
 .sr-only {

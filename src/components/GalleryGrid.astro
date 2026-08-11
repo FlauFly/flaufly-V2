@@ -1,0 +1,26 @@
+---
+interface Props {
+    description?: string;
+    size?: 'normal' | 'medium' | 'full';
+}
+
+const { description, size = 'full' } = Astro.props;
+---
+<div class={`content-image ${size}`}>
+    <slot />
+</div>
+{description && <p class="gallery-description">{description}</p>}
+
+<style>
+    .content-image {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-m);
+    }
+
+    .gallery-description {
+        font-family: var(--font-body);
+        font-style: italic;
+        text-align: center;
+    }
+</style>
